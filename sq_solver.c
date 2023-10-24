@@ -10,13 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bsq_def.h"
+#include "sq_utils.h"
 
-void	fill_all_sizes(int size)
+
+
+void	fill_all_sizes(t_baguette b)
 {
 	int	i;
 
 	i = 0;
-	while (i < size)
+	while (i <= b.map_arr_length)
+	{
+		set_size(&b.map[i], b);
 		i++;
+	}
+}
+
+t_baguette	get_solution(t_baguette b)
+{
+	fill_all_sizes(b);
+	return (b);
 }

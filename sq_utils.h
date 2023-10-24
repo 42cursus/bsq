@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bsq.h                                              :+:      :+:    :+:   */
+/*   sq_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: yberezhn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 17:04:58 by abelov            #+#    #+#             */
-/*   Updated: 2023/10/24 17:05:00 by abelov           ###   ########.fr       */
+/*   Created: 2023/10/24 19:02:46 by yberezhn          #+#    #+#             */
+/*   Updated: 2023/10/24 19:02:51 by yberezhn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BSQ_H
-# define BSQ_H
-# include "string_utils.h"
+#ifndef SQ_UTILS_H
+# define SQ_UTILS_H
 # include "bsq_def.h"
 
-t_baguette	get_solution(t_baguette b);
+void	set_size(t_sq_element *el, t_baguette b);
 
-#endif //BSQ_H
+#endif //SQ_UTILS_H
