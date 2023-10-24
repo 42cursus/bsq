@@ -1,16 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   string_utils1.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 22:32:21 by abelov            #+#    #+#             */
-/*   Updated: 2023/10/22 22:32:22 by abelov           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "string_utils.h"
 
-static const char	g_ascii_zero_character = '\0';
+void	ft_putstr(char *str)
+{
+	write(STDOUT_FILENO, str, ft_strlen(str));
+}
 
 /*
  * Copy src to dest, truncating or null-padding to always copy n bytes.
@@ -61,6 +54,26 @@ char	*ft_strcpy(char *dest, char *src)
 
 	while (*src)
 		*dest++ = *src++;
-	*dest++ = g_ascii_zero_character;
+	*dest = g_ascii_zero_character;
+	return (save);
+}
+
+/*
+ * The ft_strcat() function  appends  the src string to the dest string,
+ * overwriting the terminating null byte ('\0') at the end of dest,
+ * and then adds a terminating null byte. The strings may not overlap,
+ * and the dest string must have enough space for the result.
+ *
+ * Returns a pointer to the resulting string dest.
+ */
+char	*ft_strcat(char *dest, char *src)
+{
+	char *const	save = dest;
+
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = g_ascii_zero_character;
 	return (save);
 }
