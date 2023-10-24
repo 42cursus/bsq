@@ -30,7 +30,7 @@ typedef struct s_sq_element
 typedef struct s_baguette
 {
 	t_sq_pos		size;
-	int				map_arr_length;
+	int				map_arr_size;
 	t_sq_element	solution;
 	t_sq_element	*map;
 }						t_baguette;

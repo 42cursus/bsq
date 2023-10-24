@@ -35,8 +35,8 @@ static t_sq_element		g_sq_ary[] = {
 
 static const t_baguette	g_b = {
 {4, 4},
-	15,
-{{0, 0}, false, 0},
+	16,
+{{0, 0}, true, 0},
 	g_sq_ary
 };
 

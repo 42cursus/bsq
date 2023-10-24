@@ -74,5 +74,8 @@ void	set_size(t_sq_element *el, t_baguette b)
 			get_el(left, b),
 			get_el(diagonal, b));
 
-	el->size = min_size + 1;
+	if (el->is_obstacle == true)
+		el->size = 0;
+	else
+		el->size = min_size + 1;
 }
