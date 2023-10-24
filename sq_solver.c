@@ -14,21 +14,34 @@
 #include "string_utils.h"
 
 
-void	fill_all_sizes(t_baguette b)
+t_baguette	fill_all_sizes(t_baguette b)
 {
 	int	i;
 
 	i = 0;
-	while (i <= b.map_arr_size)
+	while (i < b.map_arr_size)
 	{
 		set_size(&b.map[i], b);
+		if (b.map[i].size > b.solution.size)
+			b.solution = b.map[i];
 		i++;
 	}
+	return (b);
 }
 
 t_baguette	get_solution(t_baguette b)
 {
-	fill_all_sizes(b);
+	t_baguette		baguette;
+	t_sq_element	s;
+	t_sq_element	temp;
+
+	baguette = fill_all_sizes(b);
+	if (baguette.solution.is_obstacle == false)
+	{
+		s = baguette.solution;
+		temp = create_element(s.pos.x - (s.size - 1), s.pos.y - (s.size - 1), s.size, s.is_obstacle);
+		baguette.solution = temp;
+	}
 	return (b);
 }
 

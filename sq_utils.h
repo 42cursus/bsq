@@ -15,6 +15,8 @@
 # include "bsq_def.h"
 # include <stddef.h>
 
-void	set_size(t_sq_element *el, t_baguette b);
+void			set_size(t_sq_element *el, t_baguette b);
+t_sq_element	create_element(int x, int y, int size, bool is_obstacle);
 t_sq_element	get_el(t_sq_pos pos, t_baguette b);
+
 #endif //SQ_UTILS_H
