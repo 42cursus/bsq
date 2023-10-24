@@ -1,8 +1,21 @@
-//
-// Created by Yelyzaveta Berezhna on 24/10/2023.
-//
+#include <stdbool.h>
 
-#ifndef SCHOOL42_FT_DEF_H
-#define SCHOOL42_FT_DEF_H
+#ifndef FT_DEF_H
+# define FT_DEF_H
 
-#endif //SCHOOL42_FT_DEF_H
+typedef struct s_sq_pos
+{
+	int	x;
+	int	y;
+}			t_sq_pos;
+
+
+typedef struct s_sq_element
+{
+	t_sq_pos	pos;
+	bool		is_obstacle;
+	int			size;
+
+}						t_sq_element;
+
+#endif //FT_DEF_H
