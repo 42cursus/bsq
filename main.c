@@ -12,15 +12,13 @@
 
 #include <sysexits.h>
 #include "bsq.h"
+#include "config.h"
 
 int	main(int argc, char *argv[])
 {
-	char	*str;
-
 	if (argc < 1)
 		return (EX_NOINPUT);
 	(void)argv;
-	str = ft_strdup(g_map);
-	ft_putstr(str);
+	get_solution(g_b);
 	return (EX_OK);
 }
