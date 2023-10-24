@@ -1,7 +1,18 @@
-#include "bsq_def.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   config.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/24 16:58:23 by abelov            #+#    #+#             */
+/*   Updated: 2023/10/24 16:58:27 by abelov           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CONFIG_H
-#define CONFIG_H
+# define CONFIG_H
+# include "bsq_def.h"
 
 static const t_sq_element	g_sq_ary[16] = {
 {{0, 0}, true, 0},
@@ -22,10 +33,10 @@ static const t_sq_element	g_sq_ary[16] = {
 {{3, 3}, false, 0}
 };
 
-static char	g_map[] =
-#include "test/map.txt"
-;
+static const int			g_sq_ary_len = 16;
 
-static const int g_sq_ary_len = 16;
+static char					g_map[] =
+#include "test/map.txt"
+	;
 
 #endif //CONFIG_H

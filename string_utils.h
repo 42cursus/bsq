@@ -11,10 +11,9 @@
 /* ************************************************************************** */
 
 #ifndef STRING_UTILS_H
-#define STRING_UTILS_H
-
-#include <stdlib.h>
-#include <unistd.h>
+# define STRING_UTILS_H
+# include <stdlib.h>
+# include <unistd.h>
 
 static const char	g_ascii_zero_character = '\0';
 
