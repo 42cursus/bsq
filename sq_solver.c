@@ -31,3 +31,21 @@ t_baguette	get_solution(t_baguette b)
 	fill_all_sizes(b);
 	return (b);
 }
+
+//typedef struct s_bsq_element
+//{
+//	struct s_sq_element	base;
+//	bool				is_bsq;
+//}
+//
+//char	*serializer(t_baguette baguette)
+//{
+//	(void)baguette;
+//	return (NULL);
+//}
+//
+//char	*serial_killer(t_baguette baguette)
+//{
+//	(void)baguette;
+//	return (NULL);
+//}
