@@ -28,4 +28,11 @@ typedef struct s_sq_element_obs
 
 }						t_sq_element;
 
+typedef struct s_baguette
+{
+	t_sq_pos		size;
+	t_sq_element	solution;
+	t_sq_element	*map;
+}						t_baguette;
+
 #endif //BSQ_DEF_H
