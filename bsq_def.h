@@ -10,7 +10,7 @@ typedef struct s_sq_pos
 }			t_sq_pos;
 
 
-typedef struct s_sq_element
+typedef struct s_sq_element_obs
 {
 	t_sq_pos	pos;
 	bool		is_obstacle;

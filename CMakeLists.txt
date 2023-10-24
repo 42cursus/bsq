@@ -21,7 +21,7 @@ set(TARGET_CFLAGS
         -g
         -Wall -Wextra -Werror)
 
-set(TARGET_LINK_FLAGS -w -Wl)
+set(TARGET_LINK_FLAGS -w -W)
 
 # Create an executable suitable for Arduino using CMake-style target-creation
 set(HEADERS

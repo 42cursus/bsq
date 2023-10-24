@@ -1,13 +1,10 @@
-#include "ft_def.h"
+#include "bsq_def.h"
 
-void fill_size(t_sq_element *arr, int size, int rows, int cols)
+void	fill_all_sizes(int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size)
-	{
-
 		i++;
-	}
 }
