@@ -26,7 +26,7 @@ char	*ft_strdup(char *src)
 	return (ft_strcpy(new, src));
 }
 
-static inline char	*ft_empty_string(int length)
+char	*ft_empty_string(int length)
 {
 	char			*new;
 	unsigned char	*ptr;

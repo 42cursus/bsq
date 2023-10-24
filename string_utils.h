@@ -17,6 +17,7 @@
 
 static const char	g_ascii_zero_character = '\0';
 
+char	*ft_empty_string(int length);
 char	*ft_strdup(char *src);
 void	ft_putstr(char *str);
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
