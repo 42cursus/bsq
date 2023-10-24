@@ -16,9 +16,14 @@
 
 int	main(int argc, char *argv[])
 {
+	char	*str;
+
 	if (argc < 1)
 		return (EX_NOINPUT);
 	(void)argv;
 	get_solution(g_b);
+	ft_putstr(serializer(g_b));
+	str = ft_strdup(g_map);
+	ft_putstr(str);
 	return (EX_OK);
 }
