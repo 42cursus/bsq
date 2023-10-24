@@ -38,7 +38,7 @@ static const t_baguette	g_b = {
 {4, 4},
 	16,
 	get_el,
-{{0, 0}, false, 0},
+{{0, 0}, true, 0},
 	g_sq_ary
 };
 
