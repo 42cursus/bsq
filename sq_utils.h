@@ -13,7 +13,8 @@
 #ifndef SQ_UTILS_H
 # define SQ_UTILS_H
 # include "bsq_def.h"
+# include <stddef.h>
 
 void	set_size(t_sq_element *el, t_baguette b);
-
+t_sq_element	get_el(t_sq_pos pos, t_baguette b);
 #endif //SQ_UTILS_H
