@@ -1,26 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 22:50:54 by abelov            #+#    #+#             */
-/*   Updated: 2023/10/23 22:50:57 by abelov           ###   ########.fr       */
+/*   Created: 2023/10/24 23:08:42 by abelov            #+#    #+#             */
+/*   Updated: 2023/10/24 23:08:44 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sysexits.h>
-#include "bsq.h"
-#include "config.h"
-
-int	main(int argc, char *argv[])
-{
-	if (argc < 1)
-		return (EX_NOINPUT);
-	(void)argv;
-	get_solution(g_b);
-	ft_putstr(serializer(g_b));
-	(void)g_map;
-	return (EX_OK);
-}
+static char	g_map[] = R"EOF(4.ox
+o...
+....
+o...
+....)EOF";

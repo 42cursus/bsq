@@ -14,6 +14,7 @@
 # define CONFIG_H
 # include "bsq_def.h"
 # include "sq_utils.h"
+# include "test/map.h"
 
 static t_sq_element		g_sq_ary[] = {
 {{0, 0}, true, 0},
@@ -41,9 +42,5 @@ static const t_baguette	g_b = {
 {{0, 0}, true, 0},
 	g_sq_ary
 };
-
-static char					g_map[] =
-#include "test/map.txt"
-	;
 
 #endif //CONFIG_H
