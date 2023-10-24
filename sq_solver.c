@@ -13,7 +13,6 @@
 #include "sq_utils.h"
 #include "string_utils.h"
 
-
 t_baguette	fill_all_sizes(t_baguette b)
 {
 	int	i;
@@ -39,7 +38,9 @@ t_baguette	get_solution(t_baguette b)
 	if (baguette.solution.is_obstacle == false)
 	{
 		s = baguette.solution;
-		temp = create_element(s.pos.x - (s.size - 1), s.pos.y - (s.size - 1), s.size, s.is_obstacle);
+		temp = create_element(s.pos.x - (s.size - 1),
+				s.pos.y - (s.size - 1),
+				s.size, s.is_obstacle);
 		baguette.solution = temp;
 	}
 	return (b);
@@ -49,18 +50,22 @@ char	*serializer(t_baguette b)
 {
 	int		i;
 	char	*str;
-	char	c;
+	char	*c;
+	int		size;
 
 	i = 0;
-	str = ft_empty_string(b.map_arr_size + b.size.y + 1);
+	size = b.map_arr_size + b.size.y + 1;
+	str = ft_empty_string(size);
 	while (i < b.map_arr_size)
 	{
-		c = '.';
+		c = ".";
+		if ((i > 0) && (i % b.size.y) == 0)
+			ft_strlcat(str, "\n", size);
 		if (b.map[i].is_obstacle)
-			c = 'o';
+			c = "o";
 		else if (b.map[i].is_obstacle)
-			c = 'x';
-		ft_strlcat(str, &c, 1);
+			c = "x";
+		ft_strlcat(str, c, size);
 		i++;
 	}
 	return (str);
