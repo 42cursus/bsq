@@ -13,6 +13,7 @@
 #ifndef SQ_UTILS_H
 # define SQ_UTILS_H
 # include "bsq_def.h"
+# include <stddef.h>
 # include <stdbool.h>
 
 t_sq_pos		create_pos(int x, int y);
@@ -20,5 +21,4 @@ t_sq_element	get_el(t_sq_pos pos, t_baguette b);
 void			set_size(t_sq_element *el, t_baguette b);
 int				get_min_size(t_sq_element e1, t_sq_element e2, t_sq_element e3);
 t_sq_element	create_element(int x, int y, int size, bool is_obstacle);
-
 #endif //SQ_UTILS_H

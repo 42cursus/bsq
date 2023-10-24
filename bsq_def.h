@@ -27,10 +27,17 @@ typedef struct s_sq_element
 	int			size;
 }						t_sq_element;
 
+typedef struct s_bsq_el
+{
+	struct s_sq_element	base;
+	bool				is_bsq;
+}						t_bsq_el;
+
 typedef struct s_baguette
 {
 	t_sq_pos		size;
 	int				map_arr_size;
+	t_sq_element	(*get_el)(t_sq_pos, struct s_baguette);
 	t_sq_element	solution;
 	t_sq_element	*map;
 }						t_baguette;

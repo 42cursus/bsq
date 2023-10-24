@@ -16,5 +16,5 @@
 # include "bsq_def.h"
 
 t_baguette	get_solution(t_baguette b);
-
+char		*serializer(t_baguette b);
 #endif //BSQ_H
