@@ -11,6 +11,11 @@
 /* ************************************************************************** */
 #include "string_utils.h"
 
+void	ft_putstr(char *str)
+{
+	write(STDOUT_FILENO, str, ft_strlen(str));
+}
+
 char	*ft_strdup(char *src)
 {
 	char	*new;
@@ -21,11 +26,10 @@ char	*ft_strdup(char *src)
 	return (ft_strcpy(new, src));
 }
 
-
 static inline char	*ft_empty_string(int length)
 {
-	char	*new;
-	unsigned char *ptr;
+	char			*new;
+	unsigned char	*ptr;
 
 	new = (char *)malloc(sizeof(char) * length + 1);
 	if (!new)

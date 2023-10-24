@@ -1,14 +1,24 @@
-#include <stdbool.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bsq_def.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/24 16:59:26 by abelov            #+#    #+#             */
+/*   Updated: 2023/10/24 16:59:29 by abelov           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef FT_DEF_H
-# define FT_DEF_H
+#ifndef BSQ_DEF_H
+# define BSQ_DEF_H
+# include <stdbool.h>
 
 typedef struct s_sq_pos
 {
 	int	x;
 	int	y;
 }			t_sq_pos;
-
 
 typedef struct s_sq_element_obs
 {
@@ -18,4 +28,4 @@ typedef struct s_sq_element_obs
 
 }						t_sq_element;
 
-#endif //FT_DEF_H
+#endif //BSQ_DEF_H

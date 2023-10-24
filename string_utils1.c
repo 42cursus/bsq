@@ -1,9 +1,16 @@
-#include "string_utils.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   string_utils1.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/24 17:05:47 by abelov            #+#    #+#             */
+/*   Updated: 2023/10/24 17:05:48 by abelov           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_putstr(char *str)
-{
-	write(STDOUT_FILENO, str, ft_strlen(str));
-}
+#include "string_utils.h"
 
 /*
  * Copy src to dest, truncating or null-padding to always copy n bytes.
