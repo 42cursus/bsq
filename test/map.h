@@ -24,4 +24,4 @@ o...
 //		"....",
 //};
 
-static char *g_legend_str = "4.ox";
+static char	*g_legend_str = "4.ox";
