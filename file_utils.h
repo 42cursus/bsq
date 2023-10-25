@@ -37,4 +37,7 @@ t_ft_file			*ft_fopen(const char *filename, const char *mode);
 int					ft_fclose(t_ft_file *fp);
 int					ft_fdopen(const char *filename, const char *mode);
 t_string_list_node	*ft_read_line_by_line(t_ft_file *fp);
+t_string_list_node	*read_line(char buf[MAXC], t_ft_file *fp);
+void				add_node_to_list(t_string_list_node **head,
+						t_string_list_node **tail, t_string_list_node *node);
 #endif //FILE_UTILS_H
