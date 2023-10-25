@@ -43,17 +43,19 @@ t_baguette	get_solution(t_baguette b)
 				s.size, s.is_obstacle);
 		baguette.solution = temp;
 	}
-	return (b);
+	return (baguette);
 }
 
 bool	is_bsq(t_baguette b, int i)
 {
 	t_sq_pos	p;
 
-	p.y = i % b.size.y;
-	p.x = i - b.size.y * p.y;
-	if ((p.y >= b.solution.pos.y) && (p.y <= (b.solution.pos.y + b.solution.size))
-		&& ((p.x >= b.solution.pos.x) && (p.x <= (b.solution.pos.x + b.solution.size))))
+	p.y = i / b.size.y;
+	p.x = i % b.size.y;
+	if ((p.y >= b.solution.pos.y)
+		&& (p.y <= (b.solution.pos.y + b.solution.size))
+		&& ((p.x >= b.solution.pos.x)
+			&& (p.x <= (b.solution.pos.x + b.solution.size))))
 		return (true);
 	return (false);
 }
