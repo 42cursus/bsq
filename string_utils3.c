@@ -66,3 +66,8 @@ int	is_printable(char c)
 {
 	return (!(c < g_ascii_space_character || c == g_ascii_del_character));
 }
+
+int	getpagesize(void)
+{
+	return (PAGESIZE);
+}
