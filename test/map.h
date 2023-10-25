@@ -15,3 +15,13 @@ o...
 ....
 o...
 ....)EOF";
+
+//static char **g_strs = {
+//		"4.ox",
+//		"o...",
+//		"....",
+//		"o...",
+//		"....",
+//};
+
+static char *g_legend_str = "4.ox";

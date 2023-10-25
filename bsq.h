@@ -16,6 +16,7 @@
 # include "bsq_def.h"
 
 //t_baguette	parse(char *buf);
-t_baguette	get_solution(t_baguette b);
-char		*serializer(t_baguette b);
+t_map_legend	get_legend(char *legend);
+t_baguette		get_solution(t_baguette b);
+char			*serializer(t_baguette b);
 #endif //BSQ_H

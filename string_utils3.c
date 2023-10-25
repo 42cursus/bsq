@@ -56,3 +56,13 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 		return (size + ft_strlen(src));
 	return (dest_len + ft_strlcpy(dest, src, size - dest_len));
 }
+
+int	is_numeric(char c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+int	is_printable(char c)
+{
+	return (!(c < g_ascii_space_character || c == g_ascii_del_character));
+}
