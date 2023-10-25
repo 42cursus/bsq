@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
-# define MAXC 80
+# define MAXC 200
 # define NOT_SAFE	0x0000
 # define SAFE_TO_READ	0x0004
 # define SAFE_TO_WRITE	0x0008

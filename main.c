@@ -14,7 +14,7 @@
 #include "config.h"
 #include "bsq.h"
 
-static const char		*g_filename = "../../bsq/test/map1.txt";
+static const char		*g_filename = "../../bsq/test/map3.txt";
 
 int	main(int argc, char *argv[])
 {
