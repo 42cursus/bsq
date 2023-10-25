@@ -15,17 +15,20 @@
 #include "sq_utils.h"
 #include "bsq.h"
 
-bool	is_str_valid(char *str, char *legend)
+bool	is_str_valid(char *str, t_map_legend l)
 {
-	int		i;
-	char	*temp;
+	int			i;
+	char		*temp;
+	char		*map_legend_sym;
 
+	map_legend_sym = (char [3]){l.empty_sym, l.obstacle_sym, '\0'};
 	i = 0;
 	while (str[i])
 	{
 		temp = (char [2]){str[i], '\0'};
-		if (ft_strcspn(temp, legend) != 0)
+		if (ft_strcspn(temp, map_legend_sym) != 0)
 			return (false);
+		i++;
 	}
 	return (true);
 }
@@ -33,25 +36,24 @@ bool	is_str_valid(char *str, char *legend)
 bool	validate_strs(t_string_list_node *node, t_map_legend l)
 {
 	const int			first_len = ft_strlen(node->data);
-	char				*map_legend_sym;
 	t_string_list_node	*current;
 
-	map_legend_sym = (char [3]){l.empty_sym, l.obstacle_sym,  '\0'};
+
 	current = node;
-	while (current->next)
+	while (current)
 	{
 		if (ft_strlen(current->data) != first_len
-			|| is_str_valid(current->data, map_legend_sym))
+			|| !is_str_valid(current->data, l))
 			return (false);
 		current = current->next;
 	}
 	return (true);
 }
 
-t_sq_element *set_map(t_string_list_node *node, t_baguette b)
+t_sq_element	*set_map(t_string_list_node *node, t_baguette b)
 {
 	int		i;
-	int 	j;
+	int		j;
 	char	c;
 
 	i = 0;
@@ -61,7 +63,8 @@ t_sq_element *set_map(t_string_list_node *node, t_baguette b)
 		while (j < b.size.x)
 		{
 			c = node->data[j];
-			b.map[i] = create_element(j, i, 0, c == b.legend.obstacle_sym);
+			b.map[i + j] = create_element(j, i, 0, c == b.legend.obstacle_sym);
+			printf("i(y): %d, j(x): %d, is_obs: %d\n", i, j, (c == b.legend.obstacle_sym));
 			j++;
 		}
 		node = node->next;
@@ -70,18 +73,18 @@ t_sq_element *set_map(t_string_list_node *node, t_baguette b)
 	return (b.map);
 }
 
-t_baguette	parse(t_string_list_node *node, t_map_legend l)
+t_baguette	parser(t_string_list_node *node, t_map_legend l)
 {
 	t_baguette		b;
-	t_sq_pos 		size;
+	t_sq_pos		size;
 
 	if (!validate_strs(node, l))
-		return get_baguette(create_pos(0,0), l, false);
+		return (get_baguette(create_pos(0, 0), l, false));
 	size = create_pos(ft_strlen(node->data), l.num_of_rows);
 	b = get_baguette(size, l, true);
 	b.map = set_map(node, b);
 	return (b);
-};
+}
 
 void	do_main(t_ft_file *fp, t_string_list_node *head)
 {
@@ -97,7 +100,7 @@ void	do_main(t_ft_file *fp, t_string_list_node *head)
 	{
 		line_num++;
 		// <==================
-		printf("%s\n", current->data);
+		//printf("%s\n", current->data);
 		// <==================
 		temp = current;
 		current = current->next;

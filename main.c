@@ -14,7 +14,7 @@
 #include "config.h"
 #include "bsq.h"
 
-static const char		*g_filename = "../../bsq/test/map1.txt";
+static const char		*g_filename = "../../bsq/test/map2.txt";
 
 int	main(int argc, char *argv[])
 {
@@ -26,8 +26,7 @@ int	main(int argc, char *argv[])
 	if (argc < 1)
 		return (EX_NOINPUT);
 	(void)argv;
-	b = get_solution(g_b);
-	ft_putstr(serializer(b));
+
 	ft_putstr("\n");
 	fp = ft_fopen(g_filename, "r");
 	if (!fp)
@@ -41,6 +40,11 @@ int	main(int argc, char *argv[])
 	if (!l.is_valid)
 		ft_putstr_std_err("map error\n");
 	head = ft_read_line_by_line(fp);
+	b = parser(head, l);
+	ft_putstr(serializer(b));
+	//c = get_solution(b);
+	//ft_putstr(serializer(c));
+	(void)b;
 	do_main(fp, head);
 	return (EX_OK);
 }

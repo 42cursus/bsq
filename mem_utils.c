@@ -3,7 +3,7 @@
 
 t_sq_element	*alloc_empty_map(int size)
 {
-	t_sq_element *map;
+	t_sq_element	*map;
 
 	map = malloc(sizeof(t_sq_element) * size);
 	if (!map)
