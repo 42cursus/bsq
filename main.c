@@ -16,11 +16,13 @@
 
 int	main(int argc, char *argv[])
 {
+	t_baguette	b;
+
 	if (argc < 1)
 		return (EX_NOINPUT);
 	(void)argv;
-	get_solution(g_b);
-	ft_putstr(serializer(g_b));
+	b = get_solution(g_b);
+	ft_putstr(serializer(b));
 	(void)g_map;
 	return (EX_OK);
 }
