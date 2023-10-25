@@ -14,7 +14,6 @@
 # define CONFIG_H
 # include "bsq_def.h"
 # include "sq_utils.h"
-# include "test/map.h"
 
 static t_sq_element		g_sq_ary[] = {
 {{0, 0}, true, 0},
