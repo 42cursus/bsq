@@ -39,6 +39,7 @@ typedef struct s_map_legend
 	char	empty_sym;
 	char	obstacle_sym;
 	char	bsq_sym;
+	bool	is_valid;
 }						t_map_legend;
 
 typedef struct s_baguette

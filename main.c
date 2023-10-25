@@ -16,12 +16,15 @@
 
 int	main(int argc, char *argv[])
 {
-	t_baguette	b;
+	t_baguette		b;
+	t_map_legend	l;
 
 	if (argc < 1)
 		return (EX_NOINPUT);
 	(void)argv;
 	(void)g_map;
+	l = get_legend(g_legend_str);
+	(void)l;
 	b = get_solution(g_b);
 	ft_putstr(serializer(b));
 	ft_putstr("\n");
