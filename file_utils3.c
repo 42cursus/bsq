@@ -12,6 +12,17 @@
 
 #include "file_utils.h"
 
+char	*get_string(char *buf, t_ft_file *fp, size_t len, char *s,
+					const unsigned char *p, unsigned char *t)
+{
+	len = ++t - p;
+	fp->_r -= len;
+	fp->ptr = t;
+	(void)ft_strncpy((void *)s, (void *)p, len);
+	s[len] = '\0';
+	return (buf);
+}
+
 /*
 * Read at most n-1 characters from the given file.
 * Stop when a newline has been read, or the count runs out.
@@ -46,14 +57,7 @@ char	*ft_fget_string(char *buf, int n, t_ft_file *fp)
 			len = n;
 		t = ft_memchr((void *)p, '\n', len);
 		if (t != NULL)
-		{
-			len = ++t - p;
-			fp->_r -= len;
-			fp->ptr = t;
-			(void)ft_strncpy((void *)s, (void *)p, len);
-			s[len] = '\0';
-			return (buf);
-		}
+			return (get_string(buf, fp, len, s, p, t));
 		fp->_r -= len;
 		fp->ptr += len;
 		(void)ft_strncpy((void *)s, (void *)p, len);
@@ -72,6 +76,7 @@ t_string_list_node	*ft_read_line_by_line(t_ft_file *fp, int *flag)
 	t_string_list_node	*tail;
 	t_string_list_node	*node;
 
+	head = NULL;
 	while (ft_fget_string(buf, MAXC, fp))
 	{
 		len = ft_strcspn(buf, "\n");
@@ -88,7 +93,7 @@ t_string_list_node	*ft_read_line_by_line(t_ft_file *fp, int *flag)
 			(*flag) = EXIT_FAILURE;
 			break ;
 		}
-		ft_strncpy(node->data, buf, len + 1);
+		node->data = ft_strncpy(node->data, buf, len + 1);
 		node->next = NULL;
 		if (!head)
 		{

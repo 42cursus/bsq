@@ -41,6 +41,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
 int				is_numeric(char c);
 int				is_printable(char c);
+char			*ft_strncat(char *dest, char *src, unsigned int nb);
 void			*ft_recallocarray(void *ptr,
 					size_t oldnmemb, size_t newnmemb, size_t size);
 #endif //STRING_UTILS_H
