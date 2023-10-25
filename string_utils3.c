@@ -67,12 +67,6 @@ int	is_printable(char c)
 	return (!(c < g_ascii_space_character || c == g_ascii_del_character));
 }
 
-/*
- * This is sqrt(SIZE_MAX+1), as s1*s2 <= SIZE_MAX
- * if both s1 < MUL_NO_OVERFLOW and s2 < MUL_NO_OVERFLOW
- */
-#define MUL_NO_OVERFLOW ((size_t)1 << (sizeof(size_t) * 4))
-
 int	getpagesize(void)
 {
 	return (PAGESIZE);
