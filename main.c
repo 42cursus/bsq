@@ -41,8 +41,8 @@ int	main(int argc, char *argv[])
 		ft_putstr_std_err("map error\n");
 	head = ft_read_line_by_line(fp);
 	b = parser(head, l);
+	b = get_solution(b);
 	ft_putstr(serializer(b));
-	//c = get_solution(b);
 	//ft_putstr(serializer(c));
 	(void)b;
 	do_main(fp, head);

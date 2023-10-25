@@ -54,18 +54,23 @@ t_sq_element	*set_map(t_string_list_node *node, t_baguette b)
 {
 	int		i;
 	int		j;
+	int		k;
 	char	c;
+	t_sq_element *p;
 
 	i = 0;
+	k = 0;
 	while (i < b.size.y)
 	{
 		j = 0;
 		while (j < b.size.x)
 		{
 			c = node->data[j];
-			b.map[i + j] = create_element(j, i, 0, c == b.legend.obstacle_sym);
-			printf("i(y): %d, j(x): %d, is_obs: %d\n", i, j, (c == b.legend.obstacle_sym));
+			p = (b.map + k);
+			*(p) = create_element(j, i, 0, c == b.legend.obstacle_sym);
+//			printf("i(y): %d, j(x): %d, is_obs: %d\n", i, j, (c == b.legend.obstacle_sym));
 			j++;
+			k++;
 		}
 		node = node->next;
 		i++;
