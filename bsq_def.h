@@ -33,12 +33,21 @@ typedef struct s_bsq_el
 	bool				is_bsq;
 }						t_bsq_el;
 
+typedef struct s_map_legend
+{
+	int		num_of_rows;
+	char	empty_sym;
+	char	obstacle_sym;
+	char	bsq_sym;
+}						t_map_legend;
+
 typedef struct s_baguette
 {
 	t_sq_pos		size;
 	int				map_arr_size;
 	t_sq_element	(*get_el)(t_sq_pos, struct s_baguette);
 	t_sq_element	solution;
+	t_map_legend	legend;
 	t_sq_element	*map;
 }						t_baguette;
 

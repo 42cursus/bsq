@@ -43,29 +43,43 @@ t_baguette	get_solution(t_baguette b)
 				s.size, s.is_obstacle);
 		baguette.solution = temp;
 	}
-	return (b);
+	return (baguette);
+}
+
+bool	is_bsq(t_baguette b, int i)
+{
+	t_sq_pos	p;
+
+	p.y = i / b.size.y;
+	p.x = i % b.size.y;
+	if ((p.y >= b.solution.pos.y)
+		&& (p.y <= (b.solution.pos.y + b.solution.size))
+		&& ((p.x >= b.solution.pos.x)
+			&& (p.x <= (b.solution.pos.x + b.solution.size))))
+		return (true);
+	return (false);
 }
 
 char	*serializer(t_baguette b)
 {
-	int		i;
-	char	*str;
-	char	*c;
-	int		size;
+	int			i;
+	char		*str;
+	char		c;
+	int			size;
 
 	i = 0;
 	size = b.map_arr_size + b.size.y + 1;
 	str = ft_empty_string(size);
 	while (i < b.map_arr_size)
 	{
-		c = ".";
+		c = b.legend.empty_sym;
 		if ((i > 0) && (i % b.size.y) == 0)
 			ft_strlcat(str, "\n", size);
 		if (b.map[i].is_obstacle)
-			c = "o";
-		else if (b.map[i].is_obstacle)
-			c = "x";
-		ft_strlcat(str, c, size);
+			c = b.legend.obstacle_sym;
+		else if (is_bsq(b, i))
+			c = b.legend.bsq_sym;
+		ft_strlcat(str, (char [2]){c, '\0'}, size);
 		i++;
 	}
 	return (str);
