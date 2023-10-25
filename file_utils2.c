@@ -23,7 +23,8 @@ int	ft_fdopen(const char *filename, const char *mode)
 	flags = check_safety_flags(mode, &oflags);
 	if (flags == 0)
 		return (-1);
-	fd = open(filename, oflags, DEFFILEMODE);
+	fd = open(filename, oflags,
+			(S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH));
 	return (fd);
 }
 

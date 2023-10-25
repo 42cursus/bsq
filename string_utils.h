@@ -19,8 +19,7 @@
  * This is sqrt(SIZE_MAX+1), as s1*s2 <= SIZE_MAX
  * if both s1 < MUL_NO_OVERFLOW and s2 < MUL_NO_OVERFLOW
  */
-# define PAGESIZE (2048)
-# define MUL_NO_OVERFLOW ((size_t)1 << (sizeof(size_t) * 4))
+# define PAGESIZE 2048
 
 static const char	g_ascii_zero_character = '\0';
 static const char	g_ascii_space_character = ' ';
