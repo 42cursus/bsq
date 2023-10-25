@@ -13,6 +13,7 @@
 #ifndef STRING_UTILS_H
 # define STRING_UTILS_H
 # include <stdlib.h>
+# include <stdbool.h>
 # include <unistd.h>
 # include <stdint.h>
 /*
