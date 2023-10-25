@@ -16,9 +16,12 @@
 
 int	main(int argc, char *argv[])
 {
+	//t_context	c;
+
 	if (argc < 1)
 		return (EX_NOINPUT);
 	(void)argv;
+	//c = parse(g_map);
 	get_solution(g_b);
 	ft_putstr(serializer(g_b));
 	(void)g_map;
