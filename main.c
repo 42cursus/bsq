@@ -37,7 +37,7 @@ int	main(int argc, char *argv[])
 	if (!fp)
 		return (1);
 	flag = 0;
-	head = ft_read_line_by_line(fp, &flag);
+	head = ft_read_line_by_line(fp);
 	if (flag != EX_OK)
 		return (flag);
 	do_main(fp, head);
