@@ -56,3 +56,81 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 		return (size + ft_strlen(src));
 	return (dest_len + ft_strlcpy(dest, src, size - dest_len));
 }
+
+/*
+ * This is sqrt(SIZE_MAX+1), as s1*s2 <= SIZE_MAX
+ * if both s1 < MUL_NO_OVERFLOW and s2 < MUL_NO_OVERFLOW
+ */
+#define MUL_NO_OVERFLOW ((size_t)1 << (sizeof(size_t) * 4))
+
+int	getpagesize(void)
+{
+	return (PAGESIZE);
+}
+
+//TODO:	use ft_memset(ptr,0, oldsize); before free
+void	*ft_recallocarray(void *ptr,
+	size_t oldnmemb, size_t newnmemb, size_t size)
+{
+	size_t	oldsize;
+	size_t	newsize;
+	void	*newptr;
+	size_t	d;
+
+	oldsize = 0;
+	newsize = 0;
+	if ((newnmemb >= MUL_NO_OVERFLOW || size >= MUL_NO_OVERFLOW)
+		&& newnmemb > 0 && SIZE_MAX / newnmemb < size)
+		return (NULL);
+	newsize = newnmemb * size;
+	if ((oldnmemb >= MUL_NO_OVERFLOW || size >= MUL_NO_OVERFLOW)
+		&& oldnmemb > 0 && SIZE_MAX / oldnmemb < size)
+		return (NULL);
+	oldsize = oldnmemb * size;
+	if (newsize <= oldsize)
+	{
+		d = oldsize - newsize;
+		if (d < oldsize / 2 && d < (size_t)getpagesize())
+		{
+			ft_memset((char *)ptr + newsize, 0, d);
+			return (ptr);
+		}
+	}
+	newptr = (char *)ft_memset(
+			malloc((newsize) * sizeof(char)), '\0', newsize);
+	if (newptr == NULL)
+		return (NULL);
+	if (ptr == NULL)
+		return (newptr);
+	if (newsize > oldsize)
+	{
+		ft_strncpy(newptr, ptr, oldsize);
+		ft_memset((char *)newptr + oldsize, 0, newsize - oldsize);
+	}
+	else
+		ft_strncpy(newptr, ptr, newsize);
+	free(ptr);
+	return (newptr);
+}
+
+size_t	ft_strcspn(const char *s1, const char *s2)
+{
+	const char	*s;
+	const char	*c;
+
+	s = s1;
+	while (*s1)
+	{
+		c = s2;
+		while (*c)
+		{
+			if (*s1 == *c)
+				break ;
+			c++;
+		}
+		if (*c)
+			break ;
+		s1++;
+	}
+	return (s1 - s);
+}
