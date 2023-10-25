@@ -50,6 +50,7 @@ typedef struct s_baguette
 	t_sq_element	solution;
 	t_map_legend	legend;
 	t_sq_element	*map;
+	bool			is_valid;
 }						t_baguette;
 
 /*

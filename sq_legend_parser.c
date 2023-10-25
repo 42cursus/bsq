@@ -12,7 +12,6 @@
 #include "bsq_def.h"
 #include "string_utils.h"
 
-//t_map_legend	set_legend(int num, char e, char o, char bsq, bool is_valid)
 t_map_legend	set_legend(int num, char *sym, bool is_valid)
 {
 	t_map_legend	temp;
