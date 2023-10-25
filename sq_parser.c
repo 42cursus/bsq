@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "bsq_def.h"
-//
+#include "bsq.h"
+
 //bool	is_legend_valid(t_map_legend l)
 //{
 //	//if (l.line_count )
@@ -40,3 +40,23 @@
 //
 //};
 //
+void	do_main(t_ft_file *fp, t_string_list_node *head)
+{
+	size_t				line_num;
+	t_string_list_node	*current;
+	t_string_list_node	*temp;
+
+	line_num = 0;
+	if (fp != (t_ft_file *)stdin)
+		ft_fclose(fp);
+	current = head;
+	while (current)
+	{
+		line_num++;
+		printf("\"%s\"\n", current->data);
+		temp = current;
+		current = current->next;
+		free(temp->data);
+		free(temp);
+	}
+}
