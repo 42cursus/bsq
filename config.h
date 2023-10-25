@@ -41,7 +41,8 @@ static const t_baguette	g_b = {
 	get_el,
 {{0, 0}, true, 0},
 {4, '.', 'o', 'x', true},
-	g_sq_ary
+	g_sq_ary,
+	true
 };
 
 #endif //CONFIG_H
