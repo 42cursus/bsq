@@ -40,3 +40,19 @@ void	set_size(t_sq_element *el, t_baguette b)
 	else
 		el->size = min_size + 1;
 }
+
+t_baguette get_baguette(t_sq_pos size, t_map_legend l, bool v)
+{
+	t_baguette	temp;
+
+	temp.size = size;
+	temp.map_arr_size = size.y * size.x;
+	temp.get_el = get_el;
+	temp.solution = create_element(0, 0, 0, true);
+	temp.legend = l;
+	temp.map = alloc_empty_map(temp.map_arr_size);
+	temp.is_valid = v;
+//	if (!temp.map)
+//		return (NULL);???????
+	return (temp);
+}

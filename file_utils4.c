@@ -22,6 +22,8 @@ t_string_list_node	*ft_read_line_by_line(t_ft_file *fp)
 	head = NULL;
 	tail = NULL;
 	node = read_line(buf, fp);
+	if (node)
+		add_node_to_list(&head, &tail, node);
 	while (node)
 	{
 		node = read_line(buf, fp);
