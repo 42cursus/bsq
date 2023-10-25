@@ -28,10 +28,6 @@
 # define FOUND_ERR	0x0040		/* found error */
 # define MALLOC_BUF	0x0080		/* _buf is from malloc */
 # define OFFSET_IS_CORRECT	0x1000		/* set iff _offset is in fact correct */
-/* Macros for common mode bit masks.  */
-# define ACCESSPERMS (S_IRWXU|S_IRWXG|S_IRWXO) /* 0777 */
-# define ALLPERMS (S_ISUID|S_ISGID|S_ISVTX|S_IRWXU|S_IRWXG|S_IRWXO)/* 07777 */
-# define DEFFILEMODE (S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP|S_IROTH|S_IWOTH)/* 0666*/
 
 int			check_safety_flags(const char *mode, int *optr);
 t_ft_file	*ft_prep_fp(void);

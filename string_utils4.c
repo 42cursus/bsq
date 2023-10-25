@@ -47,11 +47,13 @@ void	*ft_recallocarray(void *ptr,
 
 	oldsize = 0;
 	newsize = 0;
-	if ((newnmemb >= MUL_NO_OVERFLOW || size >= MUL_NO_OVERFLOW)
+	if ((newnmemb >= ((size_t) 1 << (sizeof(size_t) * 4)) || size >= ((size_t) 1
+				<< (sizeof(size_t) * 4)))
 		&& newnmemb > 0 && SIZE_MAX / newnmemb < size)
 		return (NULL);
 	newsize = newnmemb * size;
-	if ((oldnmemb >= MUL_NO_OVERFLOW || size >= MUL_NO_OVERFLOW)
+	if ((oldnmemb >= ((size_t) 1 << (sizeof(size_t) * 4)) || size >= ((size_t) 1
+				<< (sizeof(size_t) * 4)))
 		&& oldnmemb > 0 && SIZE_MAX / oldnmemb < size)
 		return (NULL);
 	oldsize = oldnmemb * size;
