@@ -50,8 +50,8 @@ bool	is_bsq(t_baguette b, int i)
 {
 	t_sq_pos	p;
 
-	p.y = i / b.size.y;
-	p.x = i % b.size.y;
+	p.y = i / b.size.x;
+	p.x = i % b.size.x;
 	if ((p.y >= b.solution.pos.y)
 		&& (p.y <= (b.solution.pos.y + b.solution.size))
 		&& ((p.x >= b.solution.pos.x)
@@ -73,7 +73,7 @@ char	*serializer(t_baguette b)
 	while (i < b.map_arr_size)
 	{
 		c = b.legend.empty_sym;
-		if ((i > 0) && (i % b.size.y) == 0)
+		if ((i > 0) && (i % b.size.x) == 0)
 			ft_strlcat(str, "\n", size);
 		if (b.map[i].is_obstacle)
 			c = b.legend.obstacle_sym;
