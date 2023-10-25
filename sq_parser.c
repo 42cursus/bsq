@@ -47,6 +47,28 @@ bool	validate_strs(t_string_list_node *node, t_map_legend l)
 	return (true);
 }
 
+t_sq_element *set_map(t_string_list_node *node, t_baguette b)
+{
+	int		i;
+	int 	j;
+	char	c;
+
+	i = 0;
+	while (i < b.size.y)
+	{
+		j = 0;
+		while (j < b.size.x)
+		{
+			c = node->data[j];
+			b.map[i] = create_element(j, i, 0, c == b.legend.obstacle_sym);
+			j++;
+		}
+		node = node->next;
+		i++;
+	}
+	return (b.map);
+}
+
 t_baguette	parse(t_string_list_node *node, t_map_legend l)
 {
 	t_baguette		b;
@@ -56,6 +78,7 @@ t_baguette	parse(t_string_list_node *node, t_map_legend l)
 		return get_baguette(create_pos(0,0), l, false);
 	size = create_pos(ft_strlen(node->data), l.num_of_rows);
 	b = get_baguette(size, l, true);
-	//b.map = set_map(node, l);
+	b.map = set_map(node, b);
+	return (b);
 };
 
