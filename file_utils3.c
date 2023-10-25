@@ -35,25 +35,22 @@ char	*get_string(char *buf, t_ft_file *fp, size_t len, char *s,
 * Return first argument, or NULL if no characters were read.
 * Do not return NULL if n == 1.
 */
-char	*ft_fget_string(char *buf, int n, t_ft_file *fp)
+char	*ft_fget_string_check(char *buf, int n, t_ft_file *fp)
 {
 	size_t			len;
 	char			*s;
 	unsigned char	*p;
 	unsigned char	*t;
 
-	if (n <= 0)
-		return (NULL);
 	s = buf;
 	n--;
 	while (n != 0)
 	{
 		if ((fp->_r) <= 0 && (ft_refill(fp)))
-		{
 			if (s == buf)
 				return (NULL);
+		if ((fp->_r) <= 0 && (ft_refill(fp)))
 			break ;
-		}
 		len = fp->_r;
 		p = fp->ptr;
 		if ((int)len > n)
@@ -69,6 +66,13 @@ char	*ft_fget_string(char *buf, int n, t_ft_file *fp)
 	}
 	*s = '\0';
 	return (buf);
+}
+
+char	*ft_fget_string(char *buf, int n, t_ft_file *fp)
+{
+	if (n <= 0)
+		return (NULL);
+	return (ft_fget_string_check(buf, n, fp));
 }
 
 t_string_list_node	*read_line(char buf[MAXC], t_ft_file *fp)
