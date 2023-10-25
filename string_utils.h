@@ -13,6 +13,7 @@
 #ifndef STRING_UTILS_H
 # define STRING_UTILS_H
 # include <stdlib.h>
+# include <stdbool.h>
 # include <unistd.h>
 # include <stdint.h>
 /*
@@ -28,6 +29,7 @@ static const char	g_ascii_del_character = 127;
 char			*ft_empty_string(int length);
 char			*ft_strdup(char *src);
 void			ft_putstr(char *str);
+void			ft_putstr_std_err(char *str);
 void			*ft_memset(void *dst, int c, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
 char			*ft_strncpy(char *dest, char *src, unsigned int n);
@@ -41,6 +43,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
 int				is_numeric(char c);
 int				is_printable(char c);
+char			*ft_strncat(char *dest, char *src, unsigned int nb);
 void			*ft_recallocarray(void *ptr,
 					size_t oldnmemb, size_t newnmemb, size_t size);
 #endif //STRING_UTILS_H

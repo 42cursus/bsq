@@ -37,52 +37,6 @@ void	*ft_memset(void *dst, int c, size_t n)
 	return (dst);
 }
 
-void	*ft_recallocarray(void *ptr,
-	size_t oldnmemb, size_t newnmemb, size_t size)
-{
-	size_t	oldsize;
-	size_t	newsize;
-	void	*newptr;
-	size_t	d;
-
-	oldsize = 0;
-	newsize = 0;
-	if ((newnmemb >= ((size_t) 1 << (sizeof(size_t) * 4)) || size >= ((size_t) 1
-				<< (sizeof(size_t) * 4)))
-		&& newnmemb > 0 && SIZE_MAX / newnmemb < size)
-		return (NULL);
-	newsize = newnmemb * size;
-	if ((oldnmemb >= ((size_t) 1 << (sizeof(size_t) * 4)) || size >= ((size_t) 1
-				<< (sizeof(size_t) * 4)))
-		&& oldnmemb > 0 && SIZE_MAX / oldnmemb < size)
-		return (NULL);
-	oldsize = oldnmemb * size;
-	if (newsize <= oldsize)
-	{
-		d = oldsize - newsize;
-		if (d < oldsize / 2 && d < (size_t)getpagesize())
-		{
-			ft_memset((char *)ptr + newsize, 0, d);
-			return (ptr);
-		}
-	}
-	newptr = (char *)ft_memset(
-			malloc((newsize) * sizeof(char)), '\0', newsize);
-	if (newptr == NULL)
-		return (NULL);
-	if (ptr == NULL)
-		return (newptr);
-	if (newsize > oldsize)
-	{
-		ft_strncpy(newptr, ptr, oldsize);
-		ft_memset((char *)newptr + oldsize, 0, newsize - oldsize);
-	}
-	else
-		ft_strncpy(newptr, ptr, newsize);
-	free(ptr);
-	return (newptr);
-}
-
 size_t	ft_strcspn(const char *s1, const char *s2)
 {
 	const char	*s;

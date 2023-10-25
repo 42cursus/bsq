@@ -67,7 +67,27 @@ int	is_printable(char c)
 	return (!(c < g_ascii_space_character || c == g_ascii_del_character));
 }
 
-int	getpagesize(void)
+/*
+ * The  ft_strncat() function  appends at most n bytes from src string to
+ * the dest string, overwriting the terminating null byte ('\0') at the end
+ * of dest, and then adds a terminating null byte. The strings may not overlap,
+ * and the dest string must have enough space for the result. The src does not
+ * need to be null-terminated if it contains n or more bytes.
+ * The resulting string in dest is always null-terminated.
+ * If  src  contains  n or more bytes, strncat() writes n+1 bytes to dest
+ * (n from src plus the terminating null byte).
+ * Therefore, the size of dest must be at least strlen(dest)+n+1.
+ */
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	return (PAGESIZE);
+	char *const		save_pointer = dest;
+	unsigned int	i;
+
+	i = 0;
+	while (*dest)
+		dest++;
+	while (*src && (i++ < nb))
+		*dest++ = *src++;
+	*dest = g_ascii_zero_character;
+	return (save_pointer);
 }

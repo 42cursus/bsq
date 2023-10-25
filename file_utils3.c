@@ -12,6 +12,23 @@
 
 #include "file_utils.h"
 
+void	*free_and_return(t_string_list_node *node)
+{
+	free(node);
+	return (NULL);
+}
+
+char	*get_string(char *buf, t_ft_file *fp, size_t len, char *s,
+					const unsigned char *p, unsigned char *t)
+{
+	len = ++t - p;
+	fp->_r -= len;
+	fp->ptr = t;
+	(void)ft_strncpy((void *)s, (void *)p, len);
+	s[len] = '\0';
+	return (buf);
+}
+
 /*
 * Read at most n-1 characters from the given file.
 * Stop when a newline has been read, or the count runs out.
@@ -31,14 +48,11 @@ char	*ft_fget_string(char *buf, int n, t_ft_file *fp)
 	n--;
 	while (n != 0)
 	{
-		if (fp->_r <= 0)
+		if ((fp->_r) <= 0 && (ft_refill(fp)))
 		{
-			if (ft_refill(fp))
-			{
-				if (s == buf)
-					return (NULL);
-				break ;
-			}
+			if (s == buf)
+				return (NULL);
+			break ;
 		}
 		len = fp->_r;
 		p = fp->ptr;
@@ -46,14 +60,7 @@ char	*ft_fget_string(char *buf, int n, t_ft_file *fp)
 			len = n;
 		t = ft_memchr((void *)p, '\n', len);
 		if (t != NULL)
-		{
-			len = ++t - p;
-			fp->_r -= len;
-			fp->ptr = t;
-			(void)ft_strncpy((void *)s, (void *)p, len);
-			s[len] = '\0';
-			return (buf);
-		}
+			return (get_string(buf, fp, len, s, p, t));
 		fp->_r -= len;
 		fp->ptr += len;
 		(void)ft_strncpy((void *)s, (void *)p, len);
@@ -64,59 +71,41 @@ char	*ft_fget_string(char *buf, int n, t_ft_file *fp)
 	return (buf);
 }
 
-t_string_list_node	*ft_read_line_by_line(t_ft_file *fp, int *flag)
+t_string_list_node	*read_line(char buf[MAXC], t_ft_file *fp)
 {
-	char				buf[MAXC];
 	size_t				len;
-	t_string_list_node	*head;
-	t_string_list_node	*tail;
 	t_string_list_node	*node;
 
-	while (ft_fget_string(buf, MAXC, fp))
+	len = 0;
+	node = (t_string_list_node *)malloc(sizeof(t_string_list_node));
+	if (!node)
+		return (NULL);
+	if (ft_fget_string(buf, MAXC, fp))
 	{
 		len = ft_strcspn(buf, "\n");
 		buf[len] = 0;
-		node = (t_string_list_node *)malloc(sizeof(t_string_list_node));
-		if (!node)
-		{
-			(*flag) = EXIT_FAILURE;
-			break ;
-		}
 		node->data = (char *)malloc(len + 1);
 		if (!node->data)
-		{
-			(*flag) = EXIT_FAILURE;
-			break ;
-		}
-		ft_strncpy(node->data, buf, len + 1);
-		node->next = NULL;
-		if (!head)
-		{
-			head = node;
-			tail = node;
-		}
-		else
-		{
-			tail->next = node;
-			tail = node;
-		}
+			return (free_and_return(node));
+		node->data = ft_strncpy(node->data, buf, len + 1);
+		node->next = (NULL);
 	}
-	return (head);
+	else
+		return (free_and_return(node));
+	return (node);
 }
 
-int	ft_fclose(t_ft_file *fp)
+void	add_node_to_list(t_string_list_node **head, t_string_list_node **tail,
+	t_string_list_node *node)
 {
-	int	r;
-
-	if (fp->_flags == 0)
-		return (EOF);
-	r = 0;
-	if (fp->_close != NULL && (*fp->_close)(fp->_cookie) < 0)
-		r = EOF;
-	if (fp->_flags & MALLOC_BUF)
-		free((char *)fp->s_buf.base);
-	fp->_r = 0;
-	fp->_w = 0;
-	fp->_flags = 0;
-	return (r);
+	if (!(*head))
+	{
+		(*head) = node;
+		(*tail) = node;
+	}
+	else
+	{
+		(*tail)->next = node;
+		(*tail) = node;
+	}
 }
