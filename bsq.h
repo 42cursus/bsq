@@ -20,4 +20,5 @@
 t_map_legend	get_legend(char *legend);
 t_baguette		get_solution(t_baguette b);
 char			*serializer(t_baguette b);
+void			do_main(t_ft_file *fp, t_string_list_node *head);
 #endif //BSQ_H
