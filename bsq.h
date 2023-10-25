@@ -12,8 +12,9 @@
 
 #ifndef BSQ_H
 # define BSQ_H
-# include "string_utils.h"
 # include "bsq_def.h"
+# include "file_utils.h"
+# include "string_utils.h"
 
 //t_baguette	parse(char *buf);
 t_map_legend	get_legend(char *legend);
