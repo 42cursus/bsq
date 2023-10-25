@@ -16,6 +16,11 @@ void	ft_putstr(char *str)
 	write(STDOUT_FILENO, str, ft_strlen(str));
 }
 
+void	ft_putstr_std_err(char *str)
+{
+	write(STDERR_FILENO, str, ft_strlen(str));
+}
+
 char	*ft_strdup(char *src)
 {
 	char	*new;

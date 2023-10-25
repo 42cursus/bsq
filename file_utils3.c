@@ -48,14 +48,11 @@ char	*ft_fget_string(char *buf, int n, t_ft_file *fp)
 	n--;
 	while (n != 0)
 	{
-		if (fp->_r <= 0)
+		if ((fp->_r) <= 0 && (ft_refill(fp)))
 		{
-			if (ft_refill(fp))
-			{
-				if (s == buf)
-					return (NULL);
-				break ;
-			}
+			if (s == buf)
+				return (NULL);
+			break ;
 		}
 		len = fp->_r;
 		p = fp->ptr;
