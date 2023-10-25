@@ -53,7 +53,9 @@ void	do_main(t_ft_file *fp, t_string_list_node *head)
 	while (current)
 	{
 		line_num++;
-		printf("\"%s\"\n", current->data);
+		// <==================
+		printf("%s\n", current->data);
+		// <==================
 		temp = current;
 		current = current->next;
 		free(temp->data);

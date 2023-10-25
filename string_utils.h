@@ -29,6 +29,7 @@ static const char	g_ascii_del_character = 127;
 char			*ft_empty_string(int length);
 char			*ft_strdup(char *src);
 void			ft_putstr(char *str);
+void			ft_putstr_std_err(char *str);
 void			*ft_memset(void *dst, int c, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
 char			*ft_strncpy(char *dest, char *src, unsigned int n);
