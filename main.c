@@ -21,8 +21,9 @@ int	main(int argc, char *argv[])
 	if (argc < 1)
 		return (EX_NOINPUT);
 	(void)argv;
+	(void)g_map;
 	b = get_solution(g_b);
 	ft_putstr(serializer(b));
-	(void)g_map;
+	ft_putstr("\n");
 	return (EX_OK);
 }
