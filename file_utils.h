@@ -36,5 +36,5 @@ int					ft_fread(void *cookie, char *buf, int n);
 t_ft_file			*ft_fopen(const char *filename, const char *mode);
 int					ft_fclose(t_ft_file *fp);
 int					ft_fdopen(const char *filename, const char *mode);
-t_string_list_node	*ft_read_line_by_line(t_ft_file *fp, int *flag);
+t_string_list_node	*ft_read_line_by_line(t_ft_file *fp);
 #endif //FILE_UTILS_H
