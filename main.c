@@ -14,7 +14,7 @@
 #include "config.h"
 #include "bsq.h"
 
-static const char		*g_filename = "../../bsq/test/map3.txt";
+static const char		*g_filename = "./test/map4.txt";
 
 int	main(int argc, char *argv[])
 {
@@ -22,6 +22,7 @@ int	main(int argc, char *argv[])
 	t_map_legend			l;
 	t_ft_file				*fp;
 	t_string_list_node		*head;
+	char					buf[MAXC];
 
 	if (argc < 1)
 		return (EX_NOINPUT);
@@ -32,20 +33,13 @@ int	main(int argc, char *argv[])
 	fp = ft_fopen(g_filename, "r");
 	if (!fp)
 		return (1);
-
-	char				buf[MAXC];
-	t_string_list_node	*node;
-	node = read_line(buf, fp);
-
-	l = get_legend(node->data);
+	l = get_legend(read_line(buf, fp)->data);
 	if (!l.is_valid)
 		ft_putstr_std_err("map error\n");
 	head = ft_read_line_by_line(fp);
 	b = parser(head, l);
 	b = get_solution(b);
 	ft_putstr(serializer(b));
-	//ft_putstr(serializer(c));
-	(void)b;
 	do_main(fp, head);
 	return (EX_OK);
 }

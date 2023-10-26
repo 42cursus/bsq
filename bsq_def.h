@@ -53,6 +53,13 @@ typedef struct s_baguette
 	bool			is_valid;
 }						t_baguette;
 
+typedef struct s_pointers
+{
+	char			*s;
+	unsigned char	*p;
+	unsigned char	*t;
+}						t_pointers;
+
 /*
  * FT_IO_FILE object type capable of recording all the information needed to
  * control a stream, including its file position indicator, a pointer to its

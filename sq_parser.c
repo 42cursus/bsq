@@ -38,7 +38,6 @@ bool	validate_strs(t_string_list_node *node, t_map_legend l)
 	const int			first_len = ft_strlen(node->data);
 	t_string_list_node	*current;
 
-
 	current = node;
 	while (current)
 	{
@@ -56,7 +55,7 @@ t_sq_element	*set_map(t_string_list_node *node, t_baguette b)
 	int		j;
 	int		k;
 	char	c;
-	t_sq_element *p;
+	char	csym;
 
 	i = 0;
 	k = 0;
@@ -66,9 +65,8 @@ t_sq_element	*set_map(t_string_list_node *node, t_baguette b)
 		while (j < b.size.x)
 		{
 			c = node->data[j];
-			p = (b.map + k);
-			*(p) = create_element(j, i, 0, c == b.legend.obstacle_sym);
-//			printf("i(y): %d, j(x): %d, is_obs: %d\n", i, j, (c == b.legend.obstacle_sym));
+			csym = b.legend.obstacle_sym;
+			b.map[k] = create_element(j, i, 0, c == csym);
 			j++;
 			k++;
 		}
@@ -104,9 +102,6 @@ void	do_main(t_ft_file *fp, t_string_list_node *head)
 	while (current)
 	{
 		line_num++;
-		// <==================
-		//printf("%s\n", current->data);
-		// <==================
 		temp = current;
 		current = current->next;
 		free(temp->data);
