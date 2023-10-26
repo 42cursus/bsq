@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "sq_utils.h"
+#include "file_utils.h"
 #include "string_utils.h"
 
 t_baguette	fill_all_sizes(t_baguette b)
@@ -85,8 +86,9 @@ char	*serializer(t_baguette b)
 	return (str);
 }
 
-char	*serial_killer(t_baguette baguette)
+t_baguette	serial_killer(t_baguette b, t_ft_file *fp)
 {
-	(void)baguette;
-	return (NULL);
+	free(b.map);
+	ft_fclose(fp);
+	return (b);
 }
