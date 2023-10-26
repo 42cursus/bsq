@@ -31,6 +31,7 @@
 
 int					check_safety_flags(const char *mode, int *optr);
 t_ft_file			*ft_prep_fp(void);
+void				read_single_file(t_ft_file *fp);
 int					ft_refill(t_ft_file *fp);
 int					ft_fread(void *cookie, char *buf, int n);
 t_ft_file			*ft_fopen(const char *filename, const char *mode);
