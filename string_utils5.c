@@ -12,25 +12,6 @@
 
 #include "string_utils.h"
 
-static inline bool	check_buf_size(size_t memb, size_t size)
-{
-	return ((memb >= ((size_t) 1 << (sizeof(size_t) * 4)) || size >= ((size_t) 1
-				<< (sizeof(size_t) * 4)))
-		&& memb > 0 && SIZE_MAX / memb < size);
-}
-
-size_t	calculate_new_size(size_t oldnmemb, size_t newnmemb, size_t size)
-{
-	size_t	old_size;
-	size_t	new_size;
-
-	old_size = oldnmemb * size;
-	new_size = newnmemb * size;
-	if (new_size <= old_size)
-		return (0);
-	return (new_size - old_size);
-}
-
 void	*allocate_and_copy_data(void *ptr, size_t old_size, size_t new_size)
 {
 	void	*new_ptr;
@@ -57,12 +38,13 @@ void	*ft_recallocarray(void *ptr,
 	void	*new_ptr;
 	size_t	new_size;
 
-	if (check_buf_size(newnmemb, size)
-		|| check_buf_size(oldnmemb, size))
-		return (NULL);
-	new_size = calculate_new_size(oldnmemb, newnmemb, size);
-	if (new_size == 0)
+	new_size = 0;
+	if (newnmemb == oldnmemb)
 		return (ptr);
+	else if (newnmemb > oldnmemb)
+		new_size = (newnmemb * size);
+	else
+		new_size = (oldnmemb * size);
 	new_ptr = allocate_and_copy_data(ptr, oldnmemb * size, new_size);
 	if (new_ptr == NULL)
 		return (NULL);

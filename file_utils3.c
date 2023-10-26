@@ -86,7 +86,10 @@ void	read_single_file(t_ft_file *fp)
 	}
 	l = get_legend(read_line(buf, fp)->data);
 	if (!l.is_valid)
+	{
 		ft_putstr_std_err("map error\n");
+		return ;
+	}
 	b = get_solution(parser(ft_read_line_by_line(fp), l));
 	ft_putstr(serializer(b));
 	ft_putstr("\n");

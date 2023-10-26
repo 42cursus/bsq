@@ -37,7 +37,7 @@ static int	ft_expand_buffer(t_ft_file *fp, int newsize)
 
 	if (fp->s_buf.size >= newsize)
 		return (0);
-	p = ft_recallocarray(fp->s_buf.base, fp->s_buf.size, newsize, 1);
+	p = ft_recallocarray(fp->s_buf.base, fp->s_buf.size, newsize, sizeof(char));
 	if (p == NULL)
 		return (-1);
 	fp->s_buf.base = p;
