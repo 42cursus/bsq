@@ -10,72 +10,48 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME			:= bsq
+NAME			:= libsq.a
 CC				:= cc
-INC_DIR			=  ./include
-INCLUDE_FLAGS	:= -I. -I $(INC_DIR) -I/usr/include
-OPTIMIZE_FLAGS	:= -O0
 DEBUG_FLAGS		:= -g3 -gdwarf-3
+INCLUDE_FLAGS	:= -I. -I./include -I/usr/include -I../../include
+OPTIMIZE_FLAGS	:= -O0
 MANDATORY_FLAGS	:= -Wall -Wextra -Werror
 CFLAGS			= $(MANDATORY_FLAGS) $(DEBUG_FLAGS) $(OPTIMIZE_FLAGS)
 
-LIBFT_PATH		=  ./lib/ft
-LIBFT			=  $(LIBFT_PATH)/libft.a
-LIBSQ_PATH		=  ./lib/sq
-LIBSQ			=  $(LIBSQ_PATH)/libsq.a
-
-
-LINK_FLAGS		:= -L $(LIBFT_PATH) -L $(LIBSQ_PATH) -lsq -lft
-
 CTAGS			:= ctags
+LIB_COMMAND		:= ar rcs
 RM				:= /bin/rm
 
 BUILD_DIR		= build
-SRC_DIR			= src
 OBJ_DIR			= $(BUILD_DIR)/obj
+SRCS	 		:=
+DIRS			:= mem sq
 
-SRC_FS	 		:= main.c
-SRCS	 		:= $(SRC_FS:%.c=$(SRC_DIR)/%.c)
-OBJS			= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+include $(addsuffix /Makefile.mk,$(DIRS))
 
-all: clean bsq test
+OBJS			= $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INCLUDE_FLAGS) -o $@ -c $<
+all: $(NAME)
 
-$(LIBFT):
-			@make -C $(LIBFT_PATH) -j8
+$(BUILD_DIR):
+		@mkdir -p $(BUILD_DIR)
 
-$(LIBSQ):
-			@make -C $(LIBSQ_PATH) -j8
+$(OBJ_DIR)/%.o: %.c
+		@mkdir -p $(@D)
+		@$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(INCLUDE_FLAGS) -c $^ -o $@
 
-bsq: $(OBJS) $(LIBFT) $(LIBSQ)
-	$(CC) $(CFLAGS) $(INCLUDE_FLAGS) -o $@ $^  $(LINK_FLAGS)
-
-test: bsq
-	printf '\033[36m%s\033[0m\n' 'this is a test'
-	./bsq test/map1.txt
-	@echo
-	./bsq test/map2.txt
-	@echo
-	./test/map_generator.pl 80 80 15 | ./bsq
+$(NAME): $(BUILD_DIR) $(OBJS)
+		$(LIB_COMMAND) $@ $(OBJS)
 
 clean:
 		@$(RM) -fr $(OBJ_DIR)
-		@make -C $(LIBFT_PATH) clean
-		@make -C $(LIBSQ_PATH) clean
 
 fclean: clean
 		@$(RM) -fr $(NAME) $(BUILD_DIR) a.out
-		@make -C $(LIBFT_PATH) fclean
-		@make -C $(LIBSQ_PATH) fclean
 
 re: fclean all
 
 norm:
 		@norminette $(SRCS)
-		@make -C $(LIBFT_PATH) norm
-		@make -C $(LIBSQ_PATH) norm
 
-.PHONY: all clean test re
+.PHONY: all clean flean re norm $(NAME)

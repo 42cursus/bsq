@@ -12,15 +12,10 @@
 
 #ifndef BSQ_H
 # define BSQ_H
-# include "bsq_def.h"
-# include "file_utils.h"
-# include "string_utils.h"
+# include "sq/bsq_def.h"
+# include "sq/sq_utils.h"
+# include "ft/file_utils.h"
+# include "ft/string_utils.h"
 
-//t_baguette	parse(char *buf);
-t_map_legend	get_legend(char *legend);
-t_baguette		get_solution(t_baguette b);
-char			*serializer(t_baguette b);
-t_baguette		serial_killer(t_baguette b, t_ft_file *fp);
-t_baguette		parser(t_string_list_node *node, t_map_legend l);
-void			do_main(t_ft_file *fp, t_string_list_node *head);
+
 #endif //BSQ_H

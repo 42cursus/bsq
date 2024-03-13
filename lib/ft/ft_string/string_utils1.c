@@ -6,13 +6,13 @@
 /*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:05:47 by abelov            #+#    #+#             */
-/*   Updated: 2023/10/24 17:05:48 by abelov           ###   ########.fr       */
+/*   Updated: 2024/03/12 18:17:51 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string_utils.h"
 
-/*
+/**
  * Copy src to dest, truncating or null-padding to always copy n bytes.
  * Return dest.
  * If there is no terminating null byte in the first n bytes of src, strncpy()
@@ -43,7 +43,7 @@ int	ft_strlen(char *str)
 	return (str - ostr);
 }
 
-/*
+/**
  * Compares s1 and s2, returning less than, equal to or greater than zero
  * if s1 is lexicographically less than, equal to or greater than s2.
  */
@@ -65,7 +65,7 @@ char	*ft_strcpy(char *dest, char *src)
 	return (save);
 }
 
-/*
+/**
  * The ft_strcat() function  appends  the src string to the dest string,
  * overwriting the terminating null byte ('\0') at the end of dest,
  * and then adds a terminating null byte. The strings may not overlap,

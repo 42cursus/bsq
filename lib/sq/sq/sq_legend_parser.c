@@ -9,8 +9,8 @@
 /*   Updated: 2023/10/25 17:30:59 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "bsq_def.h"
-#include "string_utils.h"
+
+#include "sq_utils.h"
 
 t_map_legend	set_legend(int num, char *sym, bool is_valid)
 {

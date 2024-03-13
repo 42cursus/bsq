@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "file_utils.h"
-#include "bsq.h"
 
 static inline unsigned char	*memchr_check(int n, t_ft_file *fp, size_t *len,
 	unsigned char **p)
@@ -71,27 +70,4 @@ char	*ft_fget_string(char *buf, int n, t_ft_file *fp)
 	if (n <= 0)
 		return (NULL);
 	return (ft_fget_string_check(buf, n, fp));
-}
-
-void	read_single_file(t_ft_file *fp)
-{
-	t_baguette				b;
-	t_map_legend			l;
-	char					buf[MAXC];
-
-	if (!fp)
-	{
-		ft_putstr_std_err("map error\n");
-		return ;
-	}
-	l = get_legend(read_line(buf, fp)->data);
-	if (!l.is_valid)
-	{
-		ft_putstr_std_err("map error\n");
-		return ;
-	}
-	b = get_solution(parser(ft_read_line_by_line(fp), l));
-	ft_putstr(serializer(b));
-	ft_putstr("\n");
-	serial_killer(b, fp);
 }

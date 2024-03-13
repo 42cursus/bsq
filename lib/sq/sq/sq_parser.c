@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bsq_def.h"
-#include "string_utils.h"
 #include "sq_utils.h"
-#include "bsq.h"
 
 bool	is_str_valid(char *str, t_map_legend l)
 {

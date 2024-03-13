@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mem_utils.c                                        :+:      :+:    :+:   */
+/*   mem_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yberezhn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bsq.h"
+#ifndef MEM_UTILS_H
+# define MEM_UTILS_H
+# include <stdlib.h>
+# include <stddef.h>
+# include "bsq_def.h"
 
-t_sq_element	*alloc_empty_map(int size)
-{
-	t_sq_element	*map;
+t_sq_element	*alloc_empty_map(int size);
 
-	map = malloc(sizeof(t_sq_element) * size);
-	if (!map)
-		return (NULL);
-	ft_memset(map, 0, sizeof(t_sq_element) * size);
-	return (map);
-}
+#endif //MEM_UTILS_H

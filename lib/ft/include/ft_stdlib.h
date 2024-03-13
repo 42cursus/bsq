@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mem_utils.h                                        :+:      :+:    :+:   */
+/*   ft_stdlib.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yberezhn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 19:02:46 by yberezhn          #+#    #+#             */
-/*   Updated: 2023/10/25 17:31:24 by abelov           ###   ########.fr       */
+/*   Created: 2024/03/12 19:47:42 by abelov            #+#    #+#             */
+/*   Updated: 2024/03/12 19:47:43 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MEM_UTILS_H
-# define MEM_UTILS_H
-# include "bsq_def.h"
+#ifndef FT_STDLIB_H
+#define FT_STDLIB_H
 
-t_sq_element	*alloc_empty_map(int size);
+int	ft_atoi(const char *nptr);
 
-#endif //MEM_UTILS_H
+#endif //FT_STDLIB_H

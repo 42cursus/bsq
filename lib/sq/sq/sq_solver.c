@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "sq_utils.h"
-#include "file_utils.h"
-#include "string_utils.h"
 
 t_baguette	fill_all_sizes(t_baguette b)
 {
