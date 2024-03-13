@@ -9,6 +9,7 @@
 #    Updated: 2023/10/23 22:50:57 by abelov           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 cmake_minimum_required(VERSION 3.8.2)
 
 project("bsq" VERSION 0.1.0 LANGUAGES C ASM)
@@ -23,13 +24,10 @@ set(TARGET_CFLAGS
 
 set(TARGET_LINK_FLAGS -w -W)
 
-# Create an executable suitable for Arduino using CMake-style target-creation
-set(HEADERS
-        "")
-set(SOURCES
-        "")
-file(GLOB HEADERS "*.h")
-file(GLOB SOURCES "*.c")
+# Create an executable
+
+file(GLOB HEADERS "include/*.h")
+file(GLOB SOURCES "src/*.c")
 
 add_executable(${TARGET_NAME} ${HEADERS} ${SOURCES})
 target_compile_options(${TARGET_NAME} PRIVATE ${TARGET_CFLAGS})

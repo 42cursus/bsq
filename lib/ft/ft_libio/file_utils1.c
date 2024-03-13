@@ -66,7 +66,7 @@ static void	ft_check_second_flag(const char *mode, int *ret, int *m, int *o)
 	}
 }
 
-/*
+/**
  * Return the (stdio) flags for a given mode.  Store the flags
  * to be passed to an open() syscall through *optr.
  * Return 0 on error.
@@ -85,7 +85,7 @@ int	check_safety_flags(const char *mode, int *optr)
 	return (ret);
 }
 
-/*
+/**
  * Prepare an FT_FILE for ft_fopen()
  */
 t_ft_file	*ft_prep_fp(void)

@@ -12,7 +12,7 @@
 
 #include "string_utils.h"
 
-/*
+/**
  * The ft_strlcpy() function copies up to size - 1 characters
  * from the NUL-terminated string src to dst, NUL-terminating the result.
  * Returns the total length of the string tried to create (the length of src).
@@ -34,7 +34,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	return (src - save);
 }
 
-/*
+/**
  *  The ft_strlcat() function concatenates strings. It take the full size of
  *  the buffer (not just the length) and guarantees to NUL-terminate the result
  *  (as long as there is at least one byte free in dst).
@@ -67,7 +67,7 @@ int	is_printable(char c)
 	return (!(c < g_ascii_space_character || c == g_ascii_del_character));
 }
 
-/*
+/**
  * The  ft_strncat() function  appends at most n bytes from src string to
  * the dest string, overwriting the terminating null byte ('\0') at the end
  * of dest, and then adds a terminating null byte. The strings may not overlap,
