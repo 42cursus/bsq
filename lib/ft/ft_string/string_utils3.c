@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_utils3.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abelov <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:06:06 by abelov            #+#    #+#             */
-/*   Updated: 2023/10/24 23:06:07 by abelov           ###   ########.fr       */
+/*   Updated: 2025/09/08 03:10:01 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * Return count does not include NUL character.
  * If retval >= dsize, truncation occurred.
  */
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 {
 	const char	*save = src;
 
@@ -44,7 +44,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
  *  Returns the total length of the string tried to create.
  *  That means the initial length of dst plus the length of src.
  */
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcat(char *dest, const char *src, unsigned int size)
 {
 	char *const		odest = dest;
 	unsigned int	dest_len;
@@ -64,7 +64,7 @@ int	is_numeric(char c)
 
 int	is_printable(char c)
 {
-	return (!(c < g_ascii_space_character || c == g_ascii_del_character));
+	return (c >= ' ' && c != 127);
 }
 
 /**

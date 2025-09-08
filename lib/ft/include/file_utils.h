@@ -35,7 +35,8 @@
  * read/write error has occurred, and an end-of-file indicator that records
  * whether the end of the file has been reached;
  */
-typedef struct s_ft_io_file {
+typedef struct s_ft_io_file
+{
 	int				_r;
 	int				_w;
 	int				_offset;
@@ -46,17 +47,20 @@ typedef struct s_ft_io_file {
 	unsigned char	*ptr;
 	short			_flags;
 	short			_file;
-	struct {
+	struct
+	{
 		unsigned char	*base;
 		int				size;
 	}	s_buf;
-	struct {
+	struct
+	{
 		unsigned char	*base;
 		int				size;
 	}	s_line_buf;
 }	t_ft_file;
 
-typedef struct s_string_glue {
+typedef struct s_string_glue
+{
 	char						*data;
 	struct s_string_glue		*next;
 }	t_stringlist;
@@ -75,9 +79,9 @@ int					ft_fread(void *cookie, char *buf, int n);
 t_ft_file			*ft_fopen(const char *filename, const char *mode);
 int					ft_fclose(t_ft_file *fp);
 int					ft_fdopen(const char *filename, const char *mode);
-t_stringlist	*ft_read_line_by_line(t_ft_file *fp);
-t_stringlist	*read_line(char buf[MAXC], t_ft_file *fp);
+t_stringlist		*ft_read_line_by_line(t_ft_file *fp);
+t_stringlist		*read_line(char buf[MAXC], t_ft_file *fp);
 char				*ft_fget_string(char *buf, int n, t_ft_file *fp);
 void				add_node_to_list(t_stringlist **head,
-									 t_stringlist **tail, t_stringlist *node);
+						t_stringlist **tail, t_stringlist *node);
 #endif //FILE_UTILS_H

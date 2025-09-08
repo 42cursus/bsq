@@ -20,7 +20,7 @@ static inline void	*free_and_return(t_stringlist *node)
 
 t_stringlist	*ft_read_line_by_line(t_ft_file *fp)
 {
-	char				buf[MAXC];
+	char			buf[MAXC];
 	t_stringlist	*head;
 	t_stringlist	*tail;
 	t_stringlist	*node;
@@ -42,6 +42,8 @@ int	ft_fclose(t_ft_file *fp)
 {
 	int	r;
 
+	if (!fp)
+		return (EOF);
 	if (fp->_flags == 0)
 		return (EOF);
 	r = 0;
@@ -57,7 +59,7 @@ int	ft_fclose(t_ft_file *fp)
 
 t_stringlist	*read_line(char buf[MAXC], t_ft_file *fp)
 {
-	size_t				len;
+	size_t			len;
 	t_stringlist	*node;
 
 	len = 0;
@@ -80,7 +82,7 @@ t_stringlist	*read_line(char buf[MAXC], t_ft_file *fp)
 }
 
 void	add_node_to_list(t_stringlist **head, t_stringlist **tail,
-						 t_stringlist *node)
+							t_stringlist *node)
 {
 	if (!(*head))
 	{

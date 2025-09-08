@@ -26,7 +26,7 @@ t_map_legend	set_legend(int num, char *sym, bool is_valid)
 
 t_map_legend	get_invalid_legend(void)
 {
-	return (set_legend(0, "000", false));
+	return (set_legend(0, (char *)"000", false));
 }
 
 int	get_num(char *legend, int len)
@@ -41,23 +41,29 @@ int	get_num(char *legend, int len)
 	return (result);
 }
 
-t_map_legend	get_legend(char *legend)
+t_map_legend	get_legend(t_stringlist *node)
 {
+	char *const		legend = node->data;
 	const int		len = ft_strlen(legend);
 	int				i;
 	t_map_legend	l;
 
-	i = 0;
-	if (len < 4)
-		return (get_invalid_legend());
-	while (i < len)
+	if (len >= 4)
 	{
-		if ((i + 3 < len && !is_numeric(legend[i]))
-			|| !is_printable(legend[i]))
-			return (get_invalid_legend());
-		i++;
+		i = -1;
+		while (++i < len)
+		{
+			if ((i + 3 < len && !is_numeric(legend[i]))
+				|| !is_printable(legend[i]))
+			{
+				list_free(NULL, node);
+				return (get_invalid_legend());
+			}
+		}
+		l = set_legend(get_num(legend, len), &legend[len - 3], true);
 	}
-	l = set_legend(get_num(legend, len),
-			&legend[len - 3], true);
+	else
+		l = get_invalid_legend();
+	list_free(NULL, node);
 	return (l);
 }

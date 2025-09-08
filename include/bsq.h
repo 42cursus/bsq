@@ -17,5 +17,4 @@
 # include "ft/file_utils.h"
 # include "ft/string_utils.h"
 
-
 #endif //BSQ_H

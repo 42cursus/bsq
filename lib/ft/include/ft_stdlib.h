@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef FT_STDLIB_H
-#define FT_STDLIB_H
+# define FT_STDLIB_H
 
 int	ft_atoi(const char *nptr);
 

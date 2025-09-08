@@ -32,7 +32,7 @@ bool	is_str_valid(char *str, t_map_legend l)
 
 bool	validate_strs(t_stringlist *node, t_map_legend l)
 {
-	const int			first_len = ft_strlen(node->data);
+	const int		first_len = ft_strlen(node->data);
 	t_stringlist	*current;
 
 	current = node;
@@ -83,19 +83,16 @@ t_baguette	parser(t_stringlist *node, t_map_legend l)
 	return (b);
 }
 
-void	do_main(t_ft_file *fp, t_stringlist *head)
+void	list_free(t_ft_file *fp, t_stringlist *head)
 {
-	size_t				line_num;
 	t_stringlist	*current;
 	t_stringlist	*temp;
 
-	line_num = 0;
 	if (fp != (t_ft_file *)stdin)
 		ft_fclose(fp);
 	current = head;
 	while (current)
 	{
-		line_num++;
 		temp = current;
 		current = current->next;
 		free(temp->data);

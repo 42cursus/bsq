@@ -14,24 +14,20 @@
 
 void	read_single_file(t_ft_file *fp)
 {
-	t_baguette				b;
-	t_map_legend			l;
-	t_baguette				baguette;
-	char					buf[MAXC];
-	t_stringlist		*list;
+	t_baguette		b;
+	t_map_legend	l;
+	char			*str;
+	char			buf[MAXC];
+	t_stringlist	*list;
 
 	if (!fp)
 		return ((void) ft_putstr_std_err("map error\n"));
-	t_stringlist *node = read_line(buf, fp);
-	l = get_legend(node->data);
-	free(node->data);
-	free(node);
+	l = get_legend(read_line(buf, fp));
 	if (!l.is_valid)
 		return ((void) ft_putstr_std_err("map error\n"));
 	list = ft_read_line_by_line(fp);
-	baguette = parser(list, l);
-	b = get_solution(baguette);
-	char *str = serializer(b);
+	b = get_solution(parser(list, l));
+	str = serializer(b);
 	ft_putstr(str);
 	ft_putstr("\n");
 	free(str);
