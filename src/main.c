@@ -15,14 +15,16 @@
 
 int	main(int argc, char *argv[])
 {
-	int	argg;
+	int	i;
 
-	argg = 1;
 	if (argc < 1)
 		return (EX_NOINPUT);
 	if (argc > 1)
-		while (argg < argc)
-			read_single_file(ft_fopen(argv[argg++], "r"));
+	{
+		i = 1;
+		while (i < argc)
+			read_single_file(ft_fopen(argv[i++], "r"));
+	}
 	else
 		read_single_file(ft_fopen("/dev/stdin", "r"));
 	return (EX_OK);

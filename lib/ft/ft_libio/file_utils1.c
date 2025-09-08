@@ -93,15 +93,9 @@ t_ft_file	*ft_prep_fp(void)
 	t_ft_file	*fp;
 
 	fp = malloc(sizeof(t_ft_file));
-	fp->_r = 0;
-	fp->_w = 0;
-	fp->_flags = 1;
-	fp->ptr = NULL;
-	fp->s_buf.base = NULL;
-	fp->s_buf.size = 0;
+	*fp = (t_ft_file){0};
+	fp->_flags |= MALLOC_BUF;
 	fp->_file = -1;
-	fp->s_line_buf.base = NULL;
-	fp->s_line_buf.size = 0;
 	return (fp);
 }
 

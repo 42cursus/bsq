@@ -22,18 +22,17 @@
  */
 # define PAGESIZE 2048
 
-static const char	g_ascii_zero_character = '\0';
 static const char	g_ascii_space_character = ' ';
 static const char	g_ascii_del_character = 127;
 
 char			*ft_empty_string(int length);
 char			*ft_strdup(char *src);
-void			ft_putstr(char *str);
-void			ft_putstr_std_err(char *str);
+void			ft_putstr(const char *str);
+void			ft_putstr_std_err(const char *str);
 void			*ft_memset(void *dst, int c, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
 char			*ft_strncpy(char *dest, char *src, unsigned int n);
-int				ft_strlen(char *str);
+int				ft_strlen(const char *str);
 int				ft_strcmp(char *s1, char *s2);
 char			*ft_strcpy(char *dest, char *src);
 char			*ft_strcat(char *dest, char *src);

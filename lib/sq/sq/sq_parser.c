@@ -30,10 +30,10 @@ bool	is_str_valid(char *str, t_map_legend l)
 	return (true);
 }
 
-bool	validate_strs(t_string_list_node *node, t_map_legend l)
+bool	validate_strs(t_stringlist *node, t_map_legend l)
 {
 	const int			first_len = ft_strlen(node->data);
-	t_string_list_node	*current;
+	t_stringlist	*current;
 
 	current = node;
 	while (current)
@@ -46,7 +46,7 @@ bool	validate_strs(t_string_list_node *node, t_map_legend l)
 	return (true);
 }
 
-t_sq_element	*set_map(t_string_list_node *node, t_baguette b)
+t_sq_element	*set_map(t_stringlist *node, t_baguette b)
 {
 	int		i;
 	int		j;
@@ -54,26 +54,23 @@ t_sq_element	*set_map(t_string_list_node *node, t_baguette b)
 	char	c;
 	char	csym;
 
-	i = 0;
 	k = 0;
-	while (i < b.size.y)
+	i = -1;
+	while (++i < b.size.y)
 	{
-		j = 0;
-		while (j < b.size.x)
+		j = -1;
+		while (++j < b.size.x)
 		{
 			c = node->data[j];
 			csym = b.legend.obstacle_sym;
-			b.map[k] = create_element(j, i, 0, c == csym);
-			j++;
-			k++;
+			b.map[k++] = create_element(j, i, 0, c == csym);
 		}
 		node = node->next;
-		i++;
 	}
 	return (b.map);
 }
 
-t_baguette	parser(t_string_list_node *node, t_map_legend l)
+t_baguette	parser(t_stringlist *node, t_map_legend l)
 {
 	t_baguette		b;
 	t_sq_pos		size;
@@ -86,11 +83,11 @@ t_baguette	parser(t_string_list_node *node, t_map_legend l)
 	return (b);
 }
 
-void	do_main(t_ft_file *fp, t_string_list_node *head)
+void	do_main(t_ft_file *fp, t_stringlist *head)
 {
 	size_t				line_num;
-	t_string_list_node	*current;
-	t_string_list_node	*temp;
+	t_stringlist	*current;
+	t_stringlist	*temp;
 
 	line_num = 0;
 	if (fp != (t_ft_file *)stdin)

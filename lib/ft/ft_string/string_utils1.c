@@ -30,11 +30,11 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	while (*s && (i++ < n))
 		*dest++ = *s++;
 	while (i++ < n)
-		*dest++ = g_ascii_zero_character;
+		*dest++ = '\0';
 	return (save_pointer);
 }
 
-int	ft_strlen(char *str)
+int	ft_strlen(const char *str)
 {
 	const char	*ostr = str;
 
@@ -61,7 +61,7 @@ char	*ft_strcpy(char *dest, char *src)
 
 	while (*src)
 		*dest++ = *src++;
-	*dest = g_ascii_zero_character;
+	*dest = '\0';
 	return (save);
 }
 
@@ -81,6 +81,6 @@ char	*ft_strcat(char *dest, char *src)
 		dest++;
 	while (*src)
 		*dest++ = *src++;
-	*dest = g_ascii_zero_character;
+	*dest = '\0';
 	return (save);
 }

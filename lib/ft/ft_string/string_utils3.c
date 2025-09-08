@@ -27,7 +27,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	{
 		while (size-- > 1 && *src)
 			*dest++ = *src++;
-		*dest = g_ascii_zero_character;
+		*dest = '\0';
 	}
 	while (*src)
 		src++;
@@ -88,6 +88,6 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb)
 		dest++;
 	while (*src && (i++ < nb))
 		*dest++ = *src++;
-	*dest = g_ascii_zero_character;
+	*dest = '\0';
 	return (save_pointer);
 }

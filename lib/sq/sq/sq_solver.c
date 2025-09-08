@@ -84,9 +84,21 @@ char	*serializer(t_baguette b)
 	return (str);
 }
 
-t_baguette	serial_killer(t_baguette b, t_ft_file *fp)
+t_baguette serial_killer(t_baguette b, t_ft_file *fp, t_stringlist *list)
 {
+	t_stringlist *curr;
+	t_stringlist *next;
+
+	curr = list;
+	while (curr)
+	{
+		next = curr->next;
+		free(curr->data);
+		free(curr);
+		curr = next;
+	}
 	free(b.map);
 	ft_fclose(fp);
+	free(fp);
 	return (b);
 }

@@ -59,7 +59,7 @@ typedef struct s_ft_io_file {
 typedef struct s_string_glue {
 	char						*data;
 	struct s_string_glue		*next;
-}	t_string_list_node;
+}	t_stringlist;
 
 typedef struct s_pointers
 {
@@ -75,9 +75,9 @@ int					ft_fread(void *cookie, char *buf, int n);
 t_ft_file			*ft_fopen(const char *filename, const char *mode);
 int					ft_fclose(t_ft_file *fp);
 int					ft_fdopen(const char *filename, const char *mode);
-t_string_list_node	*ft_read_line_by_line(t_ft_file *fp);
-t_string_list_node	*read_line(char buf[MAXC], t_ft_file *fp);
+t_stringlist	*ft_read_line_by_line(t_ft_file *fp);
+t_stringlist	*read_line(char buf[MAXC], t_ft_file *fp);
 char				*ft_fget_string(char *buf, int n, t_ft_file *fp);
-void				add_node_to_list(t_string_list_node **head,
-						t_string_list_node **tail, t_string_list_node *node);
+void				add_node_to_list(t_stringlist **head,
+									 t_stringlist **tail, t_stringlist *node);
 #endif //FILE_UTILS_H

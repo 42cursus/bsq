@@ -12,18 +12,18 @@
 
 #include "file_utils.h"
 
-static inline void	*free_and_return(t_string_list_node *node)
+static inline void	*free_and_return(t_stringlist *node)
 {
 	free(node);
 	return (NULL);
 }
 
-t_string_list_node	*ft_read_line_by_line(t_ft_file *fp)
+t_stringlist	*ft_read_line_by_line(t_ft_file *fp)
 {
 	char				buf[MAXC];
-	t_string_list_node	*head;
-	t_string_list_node	*tail;
-	t_string_list_node	*node;
+	t_stringlist	*head;
+	t_stringlist	*tail;
+	t_stringlist	*node;
 
 	head = NULL;
 	tail = NULL;
@@ -55,13 +55,13 @@ int	ft_fclose(t_ft_file *fp)
 	return (r);
 }
 
-t_string_list_node	*read_line(char buf[MAXC], t_ft_file *fp)
+t_stringlist	*read_line(char buf[MAXC], t_ft_file *fp)
 {
 	size_t				len;
-	t_string_list_node	*node;
+	t_stringlist	*node;
 
 	len = 0;
-	node = (t_string_list_node *)malloc(sizeof(t_string_list_node));
+	node = (t_stringlist *)malloc(sizeof(t_stringlist));
 	if (!node)
 		return (NULL);
 	if (ft_fget_string(buf, MAXC, fp))
@@ -79,8 +79,8 @@ t_string_list_node	*read_line(char buf[MAXC], t_ft_file *fp)
 	return (node);
 }
 
-void	add_node_to_list(t_string_list_node **head, t_string_list_node **tail,
-	t_string_list_node *node)
+void	add_node_to_list(t_stringlist **head, t_stringlist **tail,
+						 t_stringlist *node)
 {
 	if (!(*head))
 	{

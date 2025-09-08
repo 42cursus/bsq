@@ -16,7 +16,7 @@ DEBUG_FLAGS		:= -g3 -gdwarf-3
 INCLUDE_FLAGS	:= -I. -I./include -I/usr/include -I../../include
 OPTIMIZE_FLAGS	:= -O0
 MANDATORY_FLAGS	:= -Wall -Wextra -Werror
-CFLAGS			= $(MANDATORY_FLAGS) $(DEBUG_FLAGS) $(OPTIMIZE_FLAGS)
+CFLAGS			= $(MANDATORY_FLAGS) $(OPTIMIZE_FLAGS)
 
 CTAGS			:= ctags
 LIB_COMMAND		:= ar rcs
@@ -38,7 +38,7 @@ $(BUILD_DIR):
 
 $(OBJ_DIR)/%.o: %.c
 		@mkdir -p $(@D)
-		@$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(INCLUDE_FLAGS) -c $^ -o $@
+		@$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(INCLUDE_FLAGS) -c $(abspath $<) -o $@
 
 $(NAME): $(BUILD_DIR) $(OBJS)
 		$(LIB_COMMAND) $@ $(OBJS)

@@ -11,12 +11,29 @@
 # **************************************************************************** #
 
 NAME			:= libft.a
-CC				:= cc
+CC				:= gcc-13
+
+ifdef BUILD_WITH_ASAN
+DEBUG_FLAGS		:= -g3 -gdwarf-3 \
+					-fsanitize-address-use-after-scope \
+					-fsanitize=address,undefined,bounds,alignment,object-size \
+					-fsanitize=shift,signed-integer-overflow,null,return \
+					-fsanitize=float-divide-by-zero,float-cast-overflow \
+					-fno-sanitize-recover=all
+else
 DEBUG_FLAGS		:= -g3 -gdwarf-3
+endif
+
 INCLUDE_FLAGS	:= -I. -I./include -I/usr/include
 OPTIMIZE_FLAGS	:= -O0
 MANDATORY_FLAGS	:= -Wall -Wextra -Werror
-CFLAGS			= $(MANDATORY_FLAGS) $(DEBUG_FLAGS) $(OPTIMIZE_FLAGS)
+CFLAGS			= $(MANDATORY_FLAGS) $(OPTIMIZE_FLAGS)
+
+# CFLAGS += -ffile-prefix-map=$(PWD)=/src
+# optional, for macro-expansion paths:
+# CFLAGS += -fmacro-prefix-map=$(PWD)=/src
+# only DWARF rewritten:
+# CFLAGS += -fdebug-prefix-map=$(PWD)=/src
 
 CTAGS			:= ctags
 LIB_COMMAND		:= ar rcs
@@ -39,9 +56,9 @@ all: $(NAME)
 $(BUILD_DIR):
 		mkdir -pv $(BUILD_DIR)
 
-$(BUILD_DIR)/obj/%.o:	%.c
+$(BUILD_DIR)/obj/%.o: %.c
 		@mkdir -pv $(@D)
-		$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(INCLUDE_FLAGS) -c $^ -o $@
+		$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(INCLUDE_FLAGS) -c $(abspath $<) -o $@
 
 $(NAME): $(BUILD_DIR) $(OBJS)
 		$(LIB_COMMAND) $@ $(OBJS)

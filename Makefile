@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME			:= bsq
-CC				:= cc
+CC				:= gcc-13
 INC_DIR			=  ./include
 INCLUDE_FLAGS	:= -I. -I $(INC_DIR) -I/usr/include
 OPTIMIZE_FLAGS	:= -O0
@@ -38,7 +38,7 @@ SRC_FS	 		:= main.c
 SRCS	 		:= $(SRC_FS:%.c=$(SRC_DIR)/%.c)
 OBJS			= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-all: clean bsq test
+all: clean $(NAME) test
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
@@ -50,10 +50,10 @@ $(LIBFT):
 $(LIBSQ):
 			@make -C $(LIBSQ_PATH) -j8
 
-bsq: $(OBJS) $(LIBFT) $(LIBSQ)
+$(NAME): $(OBJS) $(LIBFT) $(LIBSQ)
 	$(CC) $(CFLAGS) $(INCLUDE_FLAGS) -o $@ $^  $(LINK_FLAGS)
 
-test: bsq
+test: $(NAME)
 	printf '\033[36m%s\033[0m\n' 'this is a test'
 	./bsq test/map1.txt
 	@echo

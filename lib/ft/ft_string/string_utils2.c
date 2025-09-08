@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 #include "string_utils.h"
 
-void	ft_putstr(char *str)
+void	ft_putstr(const char *str)
 {
 	write(STDOUT_FILENO, str, ft_strlen(str));
 }
 
-void	ft_putstr_std_err(char *str)
+void	ft_putstr_std_err(const char *str)
 {
 	write(STDERR_FILENO, str, ft_strlen(str));
 }
