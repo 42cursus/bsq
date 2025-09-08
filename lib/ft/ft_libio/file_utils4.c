@@ -20,7 +20,7 @@ static inline void	*free_and_return(t_stringlist *node)
 
 t_stringlist	*ft_read_line_by_line(t_ft_file *fp)
 {
-	char			buf[MAXC];
+	char			buf[MAXC + 1];
 	t_stringlist	*head;
 	t_stringlist	*tail;
 	t_stringlist	*node;

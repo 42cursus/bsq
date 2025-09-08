@@ -124,3 +124,14 @@ target_include_directories(${TARGET_NAME} PRIVATE
 set_target_properties(${TARGET_NAME} PROPERTIES
 		RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}"
 		OUTPUT_NAME "${PROJECT_NAME}")
+
+#==============================================================================#
+# Custom targets
+#==============================================================================#
+
+add_custom_target(fclean
+		COMMAND make -C ${FT_LIB_DIR} fclean)
+
+add_custom_target(re
+		COMMAND make -C ${FT_LIB_DIR} re
+		COMMAND make -C ${SQ_LIB_DIR} re)

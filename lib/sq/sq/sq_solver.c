@@ -52,9 +52,9 @@ bool	is_bsq(t_baguette b, int i)
 	p.y = i / b.size.x;
 	p.x = i % b.size.x;
 	if ((p.y >= b.solution.pos.y)
-		&& (p.y <= (b.solution.pos.y + b.solution.size))
+		&& (p.y < (b.solution.pos.y + b.solution.size))
 		&& ((p.x >= b.solution.pos.x)
-			&& (p.x <= (b.solution.pos.x + b.solution.size))))
+			&& (p.x < (b.solution.pos.x + b.solution.size))))
 		return (true);
 	return (false);
 }
@@ -62,25 +62,25 @@ bool	is_bsq(t_baguette b, int i)
 char	*serializer(t_baguette b)
 {
 	int			i;
-	char		*str;
 	char		c;
-	int			size;
+	const int	size = b.map_arr_size + b.size.y + 1;
+	char *const str = ft_empty_string(size);
+	char		*ptr;
 
-	i = 0;
-	size = b.map_arr_size + b.size.y + 1;
-	str = ft_empty_string(size);
-	while (i < b.map_arr_size)
+	ptr = str;
+	i = -1;
+	while (++i < b.map_arr_size)
 	{
 		c = b.legend.empty_sym;
 		if ((i > 0) && (i % b.size.x) == 0)
-			ft_strlcat(str, "\n", size);
+			*ptr++ = '\n';
 		if (b.map[i].is_obstacle)
 			c = b.legend.obstacle_sym;
 		else if (is_bsq(b, i))
 			c = b.legend.bsq_sym;
-		ft_strlcat(str, (char [2]){c, '\0'}, size);
-		i++;
+		*ptr++ = c;
 	}
+	*ptr = '\0';
 	return (str);
 }
 
