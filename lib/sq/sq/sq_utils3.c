@@ -24,7 +24,11 @@ void	read_single_file(t_ft_file *fp)
 		return ((void) ft_putstr_std_err("map error\n"));
 	l = get_legend(read_line(buf, fp));
 	if (!l.is_valid)
+	{
+		ft_fclose(fp);
+		free(fp);
 		return ((void) ft_putstr_std_err("map error\n"));
+	}
 	list = ft_read_line_by_line(fp);
 	b = get_solution(parser(list, l));
 	str = serializer(b);

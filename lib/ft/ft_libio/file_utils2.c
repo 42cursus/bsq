@@ -69,6 +69,7 @@ t_ft_file	*ft_fopen(const char *filename, const char *mode)
 	{
 		fp->_flags = 0;
 		close(fd);
+		free(fp);
 		return (NULL);
 	}
 	fp->_file = fd;

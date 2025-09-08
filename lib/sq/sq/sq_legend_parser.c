@@ -12,6 +12,8 @@
 
 #include "sq_utils.h"
 
+char *get_legend_string(t_stringlist *node);
+
 t_map_legend	set_legend(int num, char *sym, bool is_valid)
 {
 	t_map_legend	temp;
@@ -43,7 +45,7 @@ int	get_num(char *legend, int len)
 
 t_map_legend	get_legend(t_stringlist *node)
 {
-	char *const		legend = node->data;
+	char *const		legend = get_legend_string(node);
 	const int		len = ft_strlen(legend);
 	int				i;
 	t_map_legend	l;
@@ -66,4 +68,14 @@ t_map_legend	get_legend(t_stringlist *node)
 		l = get_invalid_legend();
 	list_free(NULL, node);
 	return (l);
+}
+
+char	*get_legend_string(t_stringlist *node)
+{
+	char *ret;
+
+	ret = (char *)"";
+	if (node && node->data)
+		ret = node->data;
+	return (ret);
 }
